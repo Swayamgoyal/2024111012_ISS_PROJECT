@@ -1,216 +1,311 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>startt.Your Name.endd - Developer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <span class="terminal-button red"></span>
-                    <span class="terminal-button yellow"></span>
-                    <span class="terminal-button green"></span>
-                </div>
-                <div class="terminal-title">startt.your-name.endd@portfolio:~</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#cv">CV</a></li>
-                </ul>
-            </nav>
-        </header>
+:root {
+    --bg-color: #0d1117;
+    --bg-secondary: #161b22;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+    --accent-secondary: #1f6feb;
+    --border-color: #30363d;
+    --code-comment: #8b949e;
+    --highlight: #79c0ff;
+    --error-color: #f85149;
+    --success-color: #56d364;
+    --warning-color: #e3b341;
+}
 
-        <main>
-            <section id="hero">
-                <div class="hero-content">
-                    <div class="profile-container">
-                        <img src="images/profile.jpg" alt="Profile Picture" class="profile-image">
-                    </div>
-                    <div class="hero-text">
-                        <div class="typing-container">
-                            <span class="typing-text">const developer = {</span>
-                            <h1><span class="highlight">name</span>: "<span class="name">startt.Your Name.endd</span>",</h1>
-                            <h2><span class="highlight">title</span>: "<span class="title">startt.Your Title (e.g., Full Stack Developer).endd</span>"</h2>
-                            <span class="typing-text">};</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            <section id="about" class="section-container">
-                <div class="section-header">
-                    <h2><span class="comment">// About Me</span></h2>
-                </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="code-comment">/** 
-                         * startt.Write a paragraph about yourself here. Include your background, 
-                         * interests, what drives you as a developer, and any personal details 
-                         * you'd like to share. Make it engaging and authentic to give visitors 
-                         * a sense of who you are both professionally and personally.
-                         *.endd 
-                         */</p>
-                    </div>
-                    <div class="birthplace-gallery">
-                        <h3><span class="comment">// My Birthplace</span></h3>
-                        <div class="gallery">
-                            <img src="images/birthplace1.jpg" alt="Birthplace Image 1">
-                            <img src="images/birthplace2.jpg" alt="Birthplace Image 2">
-                            <img src="images/birthplace3.jpg" alt="Birthplace Image 3">
-                        </div>
-                        <p class="birthplace-caption">
-                            <span class="code-comment">// startt.Write a brief description about your birthplace here.endd</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
 
-            <section id="education" class="section-container">
-                <div class="section-header">
-                    <h2><span class="comment">// Education & Achievements</span></h2>
-                </div>
-                <div class="education-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>startt.Degree Name.endd</h3>
-                            <h4>startt.University/College Name.endd</h4>
-                            <p class="timeline-date">startt.Year - Year.endd</p>
-                            <p>startt.Description of your studies, major, and any notable projects.endd</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>startt.High School.endd</h3>
-                            <h4>startt.School Name.endd</h4>
-                            <p class="timeline-date">startt.Year - Year.endd</p>
-                            <p>startt.Description of your high school education.endd</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item achievements">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>Key Achievements</h3>
-                            <ul>
-                                <li>startt.Achievement 1 - Add details here.endd</li>
-                                <li>startt.Achievement 2 - Add details here.endd</li>
-                                <li>startt.Achievement 3 - Add details here.endd</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-            <section id="skills" class="section-container">
-                <div class="section-header">
-                    <h2><span class="comment">// Technical Skills</span></h2>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3>Expert Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 1.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level expert"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 2.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level expert"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Advanced Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 3.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level advanced"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 4.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level advanced"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Intermediate Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 5.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level intermediate"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 6.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level intermediate"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Beginner Level</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 7.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level beginner"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">startt.Skill 8.endd</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level beginner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+/* Header Styles */
+header {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
 
-            <section id="cv" class="section-container">
-                <div class="section-header">
-                    <h2><span class="comment">// Curriculum Vitae</span></h2>
-                </div>
-                <div class="cv-content">
-                    <p>For a complete overview of my experience and qualifications, please download my CV:</p>
-                    <a href="files/startt.your-name.endd-cv.pdf" class="download-button" download>
-                        <i class="fas fa-file-pdf"></i> Download CV
-                    </a>
-                </div>
-            </section>
-        </main>
+.terminal-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
 
-        <footer>
-            <div class="social-links">
-                <a href="startt.https://github.com/your-username.endd" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="startt.https://linkedin.com/in/your-username.endd" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="startt.https://twitter.com/your-username.endd" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="mailto:startt.your-email@example.com.endd"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p>© <span id="current-year"></span> startt.Your Name.endd | Built with <i class="fas fa-code"></i> and hosted on <i class="fab fa-github"></i> Pages</p>
-        </footer>
-    </div>
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-button.red {
+    background-color: var(--error-color);
+}
+
+.terminal-button.yellow {
+    background-color: var(--warning-color);
+}
+
+.terminal-button.green {
+    background-color: var(--success-color);
+}
+
+.terminal-title {
+    font-family: 'Fira Code', monospace;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+#hero {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.typing-container {
+    font-family: 'Fira Code', monospace;
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+}
+
+.typing-text {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+h1, h2 {
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.highlight {
+    color: var(--highlight);
+}
+
+.name, .title {
+    color: var(--accent-color);
+}
+
+/* Section Styles */
+.section-container {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    display: inline-block;
+    position: relative;
+}
+
+.comment {
+    color: var(--code-comment);
+    font-family: 'Fira Code', monospace;
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.about-text {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.code-comment {
+    color: var(--code-comment);
+    font-family: 'Fira Code', monospace;
+    white-space: pre-line;
+    line-height: 1.8;
+}
+
+.birthplace-gallery h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+.birthplace-caption {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Education Section */
+.education-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: var(--border-color);
+    left: 50px;
+    top: 0;
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 80px;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    left: 43px;
+    top: 10px;
+    z-index: 1;
+}
+
+.timeline-content {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.timeline-content h3 {
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.timeline-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.achievements ul {
+    list-style
