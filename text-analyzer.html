@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer | startt.Your Name.endd</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/text-analyzer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="education.html" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="cv.html" class="nav-link">CV</a></li>
+                <li class="nav-item"><a href="text-analyzer.html" class="nav-link active">Text Analyzer</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="header-container">
+            <h1>Text Analyzer</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Text Analyzer</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Text Analyzer Section -->
+    <section class="analyzer-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Advanced Text Analysis Tool</h2>
+                <p>Analyze text to count letters, words, pronouns, prepositions, and articles</p>
+            </div>
+            <div class="analyzer-content">
+                <div class="input-container">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="terminal-button red"></span>
+                                <span class="terminal-button yellow"></span>
+                                <span class="terminal-button green"></span>
+                            </div>
+                            <div class="terminal-title">text-input.txt</div>
+                        </div>
+                        <div class="terminal-body">
+                            <textarea id="text-input" placeholder="Enter text (10,000+ words) to analyze..."></textarea>
+                        </div>
+                    </div>
+                    <button id="analyze-btn" class="analyze-btn">
+                        <i class="fas fa-code"></i> Analyze Text
+                    </button>
+                    <button id="sample-btn" class="sample-btn">
+                        <i class="fas fa-file-alt"></i> Load Sample Text
+                    </button>
+                </div>
+                <div class="results-container">
+                    <div class="results-tabs">
+                        <button class="tab-btn active" data-target="basic-stats">Basic Stats</button>
+                        <button class="tab-btn" data-target="pronouns">Pronouns</button>
+                        <button class="tab-btn" data-target="prepositions">Prepositions</button>
+                        <button class="tab-btn" data-target="articles">Articles</button>
+                    </div>
+                    <div class="results-content">
+                        <div id="basic-stats" class="tab-pane active">
+                            <h3>Basic Statistics</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-font"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Letters</h4>
+                                        <div id="letters-count" class="stat-count">0</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-file-word"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Words</h4>
+                                        <div id="words-count" class="stat-count">0</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-grip-lines"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Spaces</h4>
+                                        <div id="spaces-count" class="stat-count">0</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-paragraph"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Newlines</h4>
+                                        <div id="newlines-count" class="stat-count">0</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-asterisk"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Special Symbols</h4>
+                                        <div id="special-count" class="stat-count">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="pronouns" class="tab-pane">
+                            <h3>Pronouns Count</h3>
+                            <div class="table-container">
+                                <table id="pronouns-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Pronoun</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="prepositions" class="tab-pane">
+                            <h3>Prepositions Count</h3>
+                            <div class="table-container">
+                                <table id="prepositions-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Preposition</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="articles" class="tab-pane">
+                            <h3>Articles Count</h3>
+                            <div class="table-container">
+                                <table id="articles-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Article</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="education.html">Education</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="cv.html">CV</a>
+                    <a href="text-analyzer.html">Text Analyzer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> startt.Your Name.endd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/eventTracker.js"></script>
+    <script src="js/textAnalyzer.js"></script>
+</body>
+</html>

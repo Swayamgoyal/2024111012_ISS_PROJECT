@@ -3,125 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sahaj's Nature & Code Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>startt.Your Name.endd | Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="logo">Sahaj Gudwani</div>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
-            <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-            <li><a href="#birthplace" class="nav-link" data-section="birthplace">Birthplace</a></li>
-            <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
-            <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-            <li><a href="#cv" class="nav-link" data-section="cv">CV</a></li>
-            <li><a href="#text-analyzer" class="nav-link" data-section="text-analyzer">Text Analyzer</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="education.html" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="cv.html" class="nav-link">CV</a></li>
+                <li class="nav-item"><a href="text-analyzer.html" class="nav-link">Text Analyzer</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Page transition overlay -->
-    <div class="page-transition"></div>
-
-    <!-- Content container -->
-    <main id="content-container">
-        <!-- Home Section -->
-        <section id="home" class="content-section active">
-            <div class="section-content">
-                <h1>Welcome to My Digital Forest 🌿</h1>
-                <p>I'm Sahaj, a developer who finds harmony between code and nature. Let me take you through my journey.</p>
-                <img src="images/profile.jpg" alt="Profile Picture">
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="content-section">
-            <div class="section-content">
-                <h1>About Me</h1>
-                <p>I am a programmer who finds inspiration from the simplicity of the natural world. Whether it’s solving coding challenges or hiking trails, I love discovering patterns in chaos and building things that feel both intuitive and alive.</p>
-            </div>
-        </section>
-
-        <!-- Birthplace Section -->
-        <section id="birthplace" class="content-section">
-            <div class="section-content">
-                <h1>My Birthplace</h1>
-                <p>Here are some serene captures from the place I grew up. These surroundings taught me calm, clarity, and creativity.</p>
-                <div class="gallery">
-                    <img src="images/birthplace1.jpg" alt="Birthplace Image 1">
-                    <img src="images/birthplace2.jpg" alt="Birthplace Image 2">
-                    <img src="images/birthplace3.jpg" alt="Birthplace Image 3">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="glitch" data-text="Hello, I'm">Hello, I'm</h1>
+                    <h2 class="name">startt.Your Name.endd</h2>
+                    <h3 class="title">startt.Your Title/Role.endd</h3>
+                    <p class="description">startt.A brief one-line description about yourself.endd</p>
+                    <div class="cta-buttons">
+                        <a href="about.html" class="btn primary-btn">About Me</a>
+                        <a href="cv.html" class="btn secondary-btn">View CV</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="images/profile.jpg" alt="Profile Picture">
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="content-section">
-            <div class="section-content">
-                <h1>Education & Achievements</h1>
-                <div class="education-item">
-                    <h3>PGPM, Great Lakes Institute of Management</h3>
-                    <p>2024–2025 | Operations & Marketing</p>
-                </div>
-                <div class="education-item">
-                    <h3>BBA, XYZ University</h3>
-                    <p>2019–2022 | Business Administration</p>
-                </div>
-                <div class="achievements">
-                    <h3>Achievements</h3>
-                    <ul>
-                        <li>Top of class in PGPM</li>
-                        <li>President – ABLE Charities</li>
-                        <li>Marketing Lead – Winter Business Conference</li>
-                    </ul>
-                </div>
+            <div class="social-links">
+                <a href="startt.https://github.com/yourusername.endd" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="startt.https://linkedin.com/in/yourusername.endd" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="startt.https://twitter.com/yourusername.endd" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:startt.youremail@example.com.endd" class="social-link"><i class="fas fa-envelope"></i></a>
             </div>
-        </section>
+        </div>
+        <div class="scroll-down">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="content-section">
-            <div class="section-content">
-                <h1>Technical Skills</h1>
-                <div class="skills-container">
-                    <ul>
-                        <li><strong>Expert:</strong> HTML, CSS, Power BI, Meta Ads</li>
-                        <li><strong>Intermediate:</strong> JavaScript, Python, SQL, Canva</li>
-                        <li><strong>Beginner:</strong> React, GitHub Actions</li>
-                    </ul>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="education.html">Education</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="cv.html">CV</a>
+                    <a href="text-analyzer.html">Text Analyzer</a>
                 </div>
             </div>
-        </section>
-
-        <!-- CV Section -->
-        <section id="cv" class="content-section">
-            <div class="section-content">
-                <h1>Curriculum Vitae</h1>
-                <a href="files/sahaj-cv.pdf" class="download-btn" target="_blank"><i class="fa-solid fa-download"></i> Download CV</a>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> startt.Your Name.endd. All Rights Reserved.</p>
             </div>
-        </section>
+        </div>
+    </footer>
 
-        <!-- Text Analyzer Section -->
-        <section id="text-analyzer" class="content-section">
-            <div class="section-content">
-                <h1>Text Analyzer</h1>
-                <textarea id="text-input" placeholder="Paste a text with over 10,000 words..."></textarea>
-                <button id="analyze-btn">Analyze</button>
-                <div id="analysis-results"></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="script.js"></script>
-    <script src="eventTracker.js"></script>
-    <script src="textAnalyzer.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/eventTracker.js"></script>
 </body>
 </html>
