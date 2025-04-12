@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Dynamic Portfolio</title>
+    <title>Sahaj's Nature & Code Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
-        <div class="logo">YourName</div>
+        <div class="logo">Sahaj Gudwani</div>
         <ul class="nav-links">
             <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
             <li><a href="#about" class="nav-link" data-section="about">About</a></li>
@@ -35,8 +35,8 @@
         <!-- Home Section -->
         <section id="home" class="content-section active">
             <div class="section-content">
-                <h1>Welcome to My Portfolio</h1>
-                <p>I'm a developer passionate about creating amazing web experiences.</p>
+                <h1>Welcome to My Digital Forest 🌿</h1>
+                <p>I'm Sahaj, a developer who finds harmony between code and nature. Let me take you through my journey.</p>
                 <img src="images/profile.jpg" alt="Profile Picture">
             </div>
         </section>
@@ -45,7 +45,7 @@
         <section id="about" class="content-section">
             <div class="section-content">
                 <h1>About Me</h1>
-                <p>This is where you'll write about yourself in a paragraph.</p>
+                <p>I am a programmer who finds inspiration from the simplicity of the natural world. Whether it’s solving coding challenges or hiking trails, I love discovering patterns in chaos and building things that feel both intuitive and alive.</p>
             </div>
         </section>
 
@@ -53,6 +53,7 @@
         <section id="birthplace" class="content-section">
             <div class="section-content">
                 <h1>My Birthplace</h1>
+                <p>Here are some serene captures from the place I grew up. These surroundings taught me calm, clarity, and creativity.</p>
                 <div class="gallery">
                     <img src="images/birthplace1.jpg" alt="Birthplace Image 1">
                     <img src="images/birthplace2.jpg" alt="Birthplace Image 2">
@@ -66,15 +67,19 @@
             <div class="section-content">
                 <h1>Education & Achievements</h1>
                 <div class="education-item">
-                    <h3>Your Degree</h3>
-                    <p>University Name, Years</p>
+                    <h3>PGPM, Great Lakes Institute of Management</h3>
+                    <p>2024–2025 | Operations & Marketing</p>
+                </div>
+                <div class="education-item">
+                    <h3>BBA, XYZ University</h3>
+                    <p>2019–2022 | Business Administration</p>
                 </div>
                 <div class="achievements">
                     <h3>Achievements</h3>
                     <ul>
-                        <li>Achievement 1</li>
-                        <li>Achievement 2</li>
-                        <li>Achievement 3</li>
+                        <li>Top of class in PGPM</li>
+                        <li>President – ABLE Charities</li>
+                        <li>Marketing Lead – Winter Business Conference</li>
                     </ul>
                 </div>
             </div>
@@ -85,7 +90,11 @@
             <div class="section-content">
                 <h1>Technical Skills</h1>
                 <div class="skills-container">
-                    <!-- Skills content here -->
+                    <ul>
+                        <li><strong>Expert:</strong> HTML, CSS, Power BI, Meta Ads</li>
+                        <li><strong>Intermediate:</strong> JavaScript, Python, SQL, Canva</li>
+                        <li><strong>Beginner:</strong> React, GitHub Actions</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -94,7 +103,7 @@
         <section id="cv" class="content-section">
             <div class="section-content">
                 <h1>Curriculum Vitae</h1>
-                <a href="files/your-cv.pdf" class="download-btn">Download CV</a>
+                <a href="files/sahaj-cv.pdf" class="download-btn" target="_blank"><i class="fa-solid fa-download"></i> Download CV</a>
             </div>
         </section>
 
@@ -102,15 +111,14 @@
         <section id="text-analyzer" class="content-section">
             <div class="section-content">
                 <h1>Text Analyzer</h1>
-                <textarea id="text-input" placeholder="Enter text (10,000+ words)"></textarea>
-                <button id="analyze-btn">Analyze Text</button>
-                <div id="analysis-results">
-                    <!-- Results will appear here -->
-                </div>
+                <textarea id="text-input" placeholder="Paste a text with over 10,000 words..."></textarea>
+                <button id="analyze-btn">Analyze</button>
+                <div id="analysis-results"></div>
             </div>
         </section>
     </main>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="script.js"></script>
     <script src="eventTracker.js"></script>
