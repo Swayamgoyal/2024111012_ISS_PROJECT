@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Create transition overlay
+    // Create transition overlay with hexagon grid
     const overlay = document.createElement('div');
     overlay.className = 'page-transition-overlay';
+    
+    // Add hexagon grid for the sci-fi effect
+    const hexGrid = document.createElement('div');
+    hexGrid.className = 'hexagon-grid';
+    overlay.appendChild(hexGrid);
+    
     document.body.appendChild(overlay);
     
     // Get all internal links
@@ -43,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Navigate after transition completes
             setTimeout(() => {
                 window.location.href = target;
-            }, 500); // Match this timing to your CSS transition
+            }, 700); // Match this timing to your CSS transition
         });
     });
     
@@ -53,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             overlay.classList.remove('active');
             document.body.classList.remove('transitioning');
+            
+            // Add loaded class to content container
+            const contentContainer = document.querySelector('.content-container');
+            if (contentContainer) {
+                contentContainer.classList.add('loaded');
+            }
         }, 100);
     });
     
@@ -63,25 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 overlay.classList.remove('active');
                 document.body.classList.remove('transitioning');
+                
+                // Add loaded class to content container
+                const contentContainer = document.querySelector('.content-container');
+                if (contentContainer) {
+                    contentContainer.classList.add('loaded');
+                }
             }, 100);
         }
     });
-    
-    // Preload pages linked from the current navigation menu
-    // This makes navigation feel even more responsive
-    function preloadCurrentNavLinks() {
-        const activeNavLink = document.querySelector('.nav-link.active');
-        if (!activeNavLink) return;
-        
-        // Find siblings (other nav links)
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            if (link !== activeNavLink) {
-                preloadPage(link.getAttribute('href'));
-            }
-        });
-    }
-    
-    // Preload nav links after a short delay
-    setTimeout(preloadCurrentNavLinks, 1000);
 });
