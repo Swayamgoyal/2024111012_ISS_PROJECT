@@ -288,7 +288,6 @@ button {
     font-weight: 600;
     color: var(--text-primary);
     position: relative;
-    padding: 5px 10px;
     top: -3px;
 }
 
@@ -333,7 +332,6 @@ button {
     top:-3px;
     display: block;
     position: relative;
-    border-radius: 15px;
     transition: color 0.3s ease, background 0.3s ease;
 }
 
