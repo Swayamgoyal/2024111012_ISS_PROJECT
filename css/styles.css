@@ -47,6 +47,7 @@ body {
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
+    padding-top: 60px;
     background-color: var(--space-black);
     background-image: url('../images/galaxy-bg.jpg');
     background-size: cover;
@@ -222,16 +223,19 @@ button {
 }
 
 /* Content fade in */
+/* Adjust the content container */
 .content-container {
-    padding-top: 90px !important; /* The !important ensures this overrides any other styles */
-    min-height: calc(100vh - 120px);
+    position: relative;
+    padding-top: 20px; /* Additional spacing from navbar */
+    margin-top: 0 !important; /* Override any existing margins */
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 0.5s ease forwards; /* Fade in smoothly */
 }
-
 /* Also make sure the page header has proper spacing */
 .page-header {
-    padding-top: 20px;
+    margin-top: 0 !important; /* Remove any existing margin */
+    padding-top: 20px; /* Add padding instead */
 }
-
 
 .content-container.loaded {
     opacity: 1;
@@ -247,9 +251,10 @@ button {
     background: rgba(10, 10, 15, 0.7);
     backdrop-filter: blur(10px);
     z-index: 100;
-    padding: 15px 0;
+    min-height: unset; /* Override any min-height */
+    padding: 0 20px; /* Reduce vertical padding */
     transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    height: 80px; /* Define explicit height */
+    height: 60px; /* Define explicit height */
 }
 
 
@@ -268,7 +273,6 @@ button {
     justify-content: space-between;
     align-items: center;
     height: 60px;
-    padding: 0 20px;
 }
 
 .logo {
@@ -324,10 +328,10 @@ button {
     font-family: var(--font-sans);
     font-size: 16px;
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 6px 10px;
     display: block;
     position: relative;
-    border-radius: 20px;
+    border-radius: 15px;
     transition: color 0.3s ease, background 0.3s ease;
 }
 
@@ -593,37 +597,14 @@ button {
 
 /* =========== Animations =========== */
 @keyframes fadeIn {
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(20px);
     }
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
 .fade-in {
     animation: fadeIn 0.6s ease-out forwards;
