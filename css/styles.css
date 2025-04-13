@@ -221,10 +221,9 @@ button {
     opacity: 0.3;
 }
 
-/* 
 .page-header {
-    margin-top: 80px;
-} */
+    margin-top: 80px; /* Adjust this value based on your navbar height */
+}
 
 /* Content fade in */
 .content-container {
