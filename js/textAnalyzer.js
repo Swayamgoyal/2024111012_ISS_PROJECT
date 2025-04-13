@@ -1,188 +1,62 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get DOM elements
     const textInput = document.getElementById('text-input');
     const analyzeBtn = document.getElementById('analyze-btn');
     const sampleBtn = document.getElementById('sample-btn');
     
-    if (!textInput || !analyzeBtn) return;
-    
-    // Add cosmic glow effect to text area on focus
-    textInput.addEventListener('focus', function() {
-        this.classList.add('cosmic-glow');
-    });
-    
-    textInput.addEventListener('blur', function() {
-        this.classList.remove('cosmic-glow');
-    });
-    
-    // Analyze button click handler with loading animation
-    analyzeBtn.addEventListener('click', function() {
-        // Add loading state
-        this.classList.add('loading');
-        this.innerHTML = '<span class="loading-text">Analyzing</span>';
-        
-        // Simulate processing delay for better UX
-        setTimeout(() => {
-            const text = textInput.value;
+    // Tab navigation
+    const tabBtns = document.querySelectorAll('.results-tabs .tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
             
-            if (!text) {
-                showNotification('Please enter some text to analyze', 'warning');
-                analyzeBtn.classList.remove('loading');
-                analyzeBtn.innerHTML = '<i class="fas fa-code"></i> Analyze Text';
-                return;
-            }
+            // Update active tab button
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
             
-            // Perform analysis
-            const basicStats = analyzeBasicStats(text);
-            const pronouns = countPronouns(text);
-            const prepositions = countPrepositions(text);
-            const articles = countArticles(text);
-            
-            // Display results with animation
-            displayBasicStats(basicStats);
-            displayTableResults(pronouns, 'pronouns-table');
-            displayTableResults(prepositions, 'prepositions-table');
-            displayTableResults(articles, 'articles-table');
-            
-            // Show success notification
-            showNotification('Analysis complete!', 'success');
-            
-            // Remove loading state
-            analyzeBtn.classList.remove('loading');
-            analyzeBtn.innerHTML = '<i class="fas fa-code"></i> Analyze Text';
-            
-            // Switch to results tab if on mobile
-            if (window.innerWidth < 768) {
-                document.querySelector('.tab-btn[data-target="basic-stats"]').click();
-            }
-        }, 800);
-    });
-    
-    // Sample text button click handler
-    if (sampleBtn) {
-        sampleBtn.addEventListener('click', function() {
-            // Add loading state
-            this.classList.add('loading');
-            
-            // Load a sample text (excerpt from a famous book or article)
-            fetch('files/sample-text.txt')
-                .then(response => response.text())
-                .then(data => {
-                    textInput.value = data;
-                    
-                    // Create typing effect
-                    typeText(textInput, data);
-                    
-                    // Show notification
-                    showNotification('Sample text loaded!', 'info');
-                    
-                    // Remove loading state
-                    this.classList.remove('loading');
-                })
-                .catch(error => {
-                    // If file doesn't exist, use a fallback sample text
-                    const sampleText = getSampleText();
-                    textInput.value = sampleText;
-                    
-                    // Create typing effect
-                    typeText(textInput, sampleText);
-                    
-                    // Show notification
-                    showNotification('Sample text loaded!', 'info');
-                    
-                    // Remove loading state
-                    this.classList.remove('loading');
-                });
+            // Update active tab content
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            document.getElementById(target).classList.add('active');
         });
-    }
+    });
     
-    // Function to create a typing effect
-    function typeText(element, text) {
-        // Store the full text
-        const fullText = text;
+    // Analyze button click handler
+    analyzeBtn.addEventListener('click', function() {
+        const text = textInput.value;
         
-        // Clear the element
-        element.value = '';
-        
-        // Set cursor to end
-        element.scrollTop = element.scrollHeight;
-        
-        // Skip animation for very long texts
-        if (text.length > 5000) {
-            element.value = fullText;
+        if (!text) {
+            alert('Please enter some text to analyze.');
             return;
         }
         
-        // Type with increasing speed
-        let i = 0;
-        const initialSpeed = 1; // ms per character
+        // Perform analysis
+        const basicStats = analyzeBasicStats(text);
+        const pronouns = countPronouns(text);
+        const prepositions = countPrepositions(text);
+        const articles = countArticles(text);
         
-        function typeCharacter() {
-            if (i < fullText.length) {
-                element.value += fullText.charAt(i);
-                i++;
-                
-                // Scroll to bottom as we type
-                element.scrollTop = element.scrollHeight;
-                
-                // Increase speed as we go
-                const speed = Math.max(initialSpeed * (1 - i/fullText.length * 0.9), 0.1);
-                setTimeout(typeCharacter, speed);
-            }
-        }
-        
-        typeCharacter();
-    }
+        // Display results
+        displayBasicStats(basicStats);
+        displayTableResults(pronouns, 'pronouns-table');
+        displayTableResults(prepositions, 'prepositions-table');
+        displayTableResults(articles, 'articles-table');
+    });
     
-    // Function to show notification
-    function showNotification(message, type = 'info') {
-        // Remove any existing notification
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fas ${type === 'success' ? 'fa-check-circle' : 
-                               type === 'warning' ? 'fa-exclamation-triangle' : 
-                               'fa-info-circle'}"></i>
-                <span>${message}</span>
-            </div>
-            <button class="notification-close"><i class="fas fa-times"></i></button>
-        `;
-        
-        // Add to DOM
-        document.body.appendChild(notification);
-        
-        // Add active class after a small delay (for animation)
-        setTimeout(() => {
-            notification.classList.add('active');
-        }, 10);
-        
-        // Add close button functionality
-        notification.querySelector('.notification-close').addEventListener('click', () => {
-            notification.classList.remove('active');
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        });
-        
-        // Auto remove after 5 seconds
-        setTimeout(() => {
-            if (document.body.contains(notification)) {
-                notification.classList.remove('active');
-                setTimeout(() => {
-                    if (document.body.contains(notification)) {
-                        notification.remove();
-                    }
-                }, 300);
-            }
-        }, 5000);
-    }
+    // Sample text button click handler
+    sampleBtn.addEventListener('click', function() {
+        // Load a sample text (excerpt from a famous book or article)
+        fetch('files/sample-text.txt')
+            .then(response => response.text())
+            .then(data => {
+                textInput.value = data;
+            })
+            .catch(error => {
+                // If file doesn't exist, use a fallback sample text
+                textInput.value = getSampleText();
+            });
+    });
     
     // Function to analyze basic statistics
     function analyzeBasicStats(text) {
@@ -248,63 +122,18 @@ document.addEventListener('DOMContentLoaded', function() {
         return counts;
     }
     
-    // Function to display basic statistics with animation
+    // Function to display basic statistics
     function displayBasicStats(stats) {
-        const elements = {
-            'letters-count': stats.letters,
-            'words-count': stats.words,
-            'spaces-count': stats.spaces,
-            'newlines-count': stats.newlines,
-            'special-count': stats.specialSymbols
-        };
-        
-        for (const [id, value] of Object.entries(elements)) {
-            const element = document.getElementById(id);
-            if (element) {
-                // Animate the counting
-                animateCount(element, value);
-            }
-        }
+        document.getElementById('letters-count').textContent = stats.letters;
+        document.getElementById('words-count').textContent = stats.words;
+        document.getElementById('spaces-count').textContent = stats.spaces;
+        document.getElementById('newlines-count').textContent = stats.newlines;
+        document.getElementById('special-count').textContent = stats.specialSymbols;
     }
     
-    // Function to animate counting
-    function animateCount(element, targetValue) {
-        // Get current value
-        const startValue = parseInt(element.textContent) || 0;
-        const duration = 1500; // ms
-        const frameRate = 60;
-        const totalFrames = duration / (1000 / frameRate);
-        const valueIncrement = (targetValue - startValue) / totalFrames;
-        
-        let currentFrame = 0;
-        let currentValue = startValue;
-        
-        const animate = () => {
-            currentFrame++;
-            currentValue += valueIncrement;
-            
-            if (currentFrame <= totalFrames) {
-                element.textContent = Math.round(currentValue);
-                requestAnimationFrame(animate);
-            } else {
-                element.textContent = targetValue;
-                
-                // Add a pulse effect when done
-                element.classList.add('pulse-once');
-                setTimeout(() => {
-                    element.classList.remove('pulse-once');
-                }, 1000);
-            }
-        };
-        
-        animate();
-    }
-    
-    // Function to display table results with animation
+    // Function to display table results
     function displayTableResults(counts, tableId) {
         const table = document.getElementById(tableId);
-        if (!table) return;
-        
         const tbody = table.querySelector('tbody');
         
         // Clear previous results
@@ -320,74 +149,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Create table rows with staggered animation
-        sortedEntries.forEach(([word, count], index) => {
+        // Create table rows
+        sortedEntries.forEach(([word, count]) => {
             const row = document.createElement('tr');
-            row.className = 'stagger-item';
             row.innerHTML = `
                 <td>${word}</td>
                 <td>${count}</td>
             `;
             tbody.appendChild(row);
-            
-            // Staggered animation
-            setTimeout(() => {
-                row.classList.add('visible');
-            }, 50 * index);
-        });
-        
-        // Make table sortable
-        makeTableSortable(table);
-    }
-    
-    // Function to make tables sortable
-    function makeTableSortable(table) {
-        const headers = table.querySelectorAll('th');
-        
-        headers.forEach(header => {
-            // Add sortable class and cursor
-            header.classList.add('sortable');
-            
-            header.addEventListener('click', () => {
-                const isAscending = header.classList.contains('asc');
-                
-                // Reset all headers
-                headers.forEach(h => h.classList.remove('asc', 'desc'));
-                
-                // Set new sort direction
-                header.classList.add(isAscending ? 'desc' : 'asc');
-                
-                // Get the index of the clicked header
-                const columnIndex = Array.from(header.parentNode.children).indexOf(header);
-                
-                // Get all rows except the header
-                const tbody = table.querySelector('tbody');
-                const rows = Array.from(tbody.querySelectorAll('tr'));
-                
-                // Sort the rows
-                rows.sort((rowA, rowB) => {
-                    const cellA = rowA.cells[columnIndex].textContent.trim();
-                    const cellB = rowB.cells[columnIndex].textContent.trim();
-                    
-                    // Check if the content is numeric
-                    const numA = parseFloat(cellA);
-                    const numB = parseFloat(cellB);
-                    
-                    if (!isNaN(numA) && !isNaN(numB)) {
-                        return isAscending ? numA - numB : numB - numA;
-                    } else {
-                        return isAscending 
-                            ? cellA.localeCompare(cellB) 
-                            : cellB.localeCompare(cellA);
-                    }
-                });
-                
-                // Remove all rows from the table
-                rows.forEach(row => row.remove());
-                
-                // Add the sorted rows back to the table
-                rows.forEach(row => tbody.appendChild(row));
-            });
         });
     }
     
@@ -425,17 +194,18 @@ Four score and seven years ago our fathers brought forth on this continent, a ne
         });
     });
     
-    // Word count warning
-    const wordCountWarning = document.createElement('div');
-    wordCountWarning.className = 'word-count-warning';
-    wordCountWarning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> For best results, please enter at least 10,000 words.';
-    
-    if (textInput) {
-        textInput.parentNode.insertBefore(wordCountWarning, textInput.nextSibling);
+        // Word count warning
+        const wordCountWarning = document.createElement('div');
+        wordCountWarning.className = 'word-count-warning';
+        wordCountWarning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> For best results, please enter at least 10,000 words.';
         
-        textInput.addEventListener('input', function() {
-            const wordCount = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
-            wordCountWarning.classList.toggle('show', wordCount > 0 && wordCount < 10000);
-        });
-    }
+        if (textInput) {
+            textInput.parentNode.insertBefore(wordCountWarning, textInput.nextSibling);
+            
+            textInput.addEventListener('input', function() {
+                const wordCount = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+                wordCountWarning.classList.toggle('show', wordCount > 0 && wordCount < 10000);
+            });
+        }
+
 });
