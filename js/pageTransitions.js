@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Create transition overlay with hexagon grid
+    // Create transition overlay with cosmic warp effect
     const overlay = document.createElement('div');
     overlay.className = 'page-transition-overlay';
     
-    // Add hexagon grid for the sci-fi effect
-    const hexGrid = document.createElement('div');
-    hexGrid.className = 'hexagon-grid';
-    overlay.appendChild(hexGrid);
+    // Add cosmic warp for the sci-fi effect
+    const cosmicWarp = document.createElement('div');
+    cosmicWarp.className = 'cosmic-warp';
+    overlay.appendChild(cosmicWarp);
     
     document.body.appendChild(overlay);
     
@@ -65,6 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (contentContainer) {
                 contentContainer.classList.add('loaded');
             }
+            
+            // Animate skill bars
+            animateSkillBars();
+            
+            // Animate elements
+            animateOnScroll();
         }, 100);
     });
     
@@ -83,5 +89,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 100);
         }
+    });
+    
+    // Animate skill bars when they come into view
+    function animateSkillBars() {
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        skillBars.forEach(bar => {
+            const barTop = bar.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (barTop < windowHeight - 100) {
+                const width = bar.getAttribute('data-width') || '0%';
+                bar.style.width = width;
+            }
+        });
+    }
+    
+    // Animate elements when they come into view
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.fade-in, .slide-in, .scale-in, .stagger-item');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 100) {
+                element.classList.add('visible');
+            }
+        });
+    }
+    
+    // Run animations on scroll
+    window.addEventListener('scroll', function() {
+        animateSkillBars();
+        animateOnScroll();
     });
 });

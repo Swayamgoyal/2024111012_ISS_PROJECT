@@ -24,50 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Animate skill bars when they come into view
-    function animateSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        skillBars.forEach(bar => {
-            const barTop = bar.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (barTop < windowHeight - 100) {
-                const width = bar.getAttribute('data-width') || '0%';
-                bar.style.width = width;
-            }
-        });
-    }
-    
-    // Run on page load and scroll
-    animateSkillBars();
-    window.addEventListener('scroll', animateSkillBars);
-    
-    // Animate elements when they come into view
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.fade-in, .slide-in, .scale-in');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight - 100) {
-                element.classList.add('visible');
-            }
-        });
-    }
-    
-    // Run on page load and scroll
-    animateOnScroll();
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Add tech-panel and tech-border classes to appropriate elements
+    // Add curved-card and glow-border classes to appropriate elements
     document.querySelectorAll('.card').forEach(card => {
-        card.classList.add('tech-panel');
+        card.classList.add('curved-card');
     });
     
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.classList.add('tech-border');
+    document.querySelectorAll('.skill-item, .terminal-window').forEach(item => {
+        item.classList.add('glow-border');
+    });
+    
+    // Add floating animation to selected cards
+    document.querySelectorAll('.skill-item:nth-child(odd), .gallery-item:nth-child(even)').forEach(item => {
+        item.classList.add('float');
+    });
+    
+    // Add pulse animation to accent elements
+    document.querySelectorAll('.btn-primary, .timeline-item::before').forEach(item => {
+        item.classList.add('pulse');
     });
     
     // Tabs functionality
@@ -88,4 +61,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Parallax effect for background stars
+    window.addEventListener('mousemove', function(e) {
+        const stars = document.querySelector('body::after');
+        if (stars) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            stars.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+        }
+    });
 });
