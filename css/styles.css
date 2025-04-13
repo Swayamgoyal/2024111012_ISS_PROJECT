@@ -65,7 +65,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/stars.jpg');
+    background-image: url('images/backgroound.jpg');
     animation: starsMove 100s linear infinite;
     pointer-events: none;
     z-index: -1;
