@@ -50,41 +50,6 @@ body {
     background-color: var(--space-black);
 }
 
-/* Galaxy Background */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/galaxy-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -2;
-}
-
-/* Animated Stars Layer */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/stars.jpg');
-    background-repeat: repeat;
-    z-index: -1;
-    opacity: 0.6;
-    animation: starsMove 150s linear infinite;
-}
-
-@keyframes starsMove {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 1000px; }
-}
-
 a {
     text-decoration: none;
     color: var(--text-primary);
