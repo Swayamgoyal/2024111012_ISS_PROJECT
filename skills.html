@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Skills | startt.Your Name.endd</title>
+    <title>Skills | Swayam Goyal</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/skills.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preload background images for better performance -->
+    <link rel="preload" href="images/galaxy-bg.jpg" as="image">
+    <link rel="preload" href="images/stars.jpg" as="image">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -32,132 +35,378 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="header-container">
-            <h1>Technical Skills</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / <span>Skills</span>
+    <!-- Content Container -->
+    <div class="content-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">Technical Skills</h1>
+                <div class="cosmic-divider"></div>
+                <p class="page-subtitle">Exploring my technical capabilities and expertise</p>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Skills Section -->
-    <section class="skills-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>My Expertise</h2>
-                <p>A showcase of my technical abilities and proficiencies</p>
-            </div>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <h3>Expert Level</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <div class="container">
+                <div class="skills-container">
+                    <!-- Programming Languages -->
+                    <div class="skill-category curved-card glow-border fade-in">
+                        <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fab fa-js"></i>
+                                <i class="fas fa-code"></i>
                             </div>
-                            <h4>startt.Skill 1.endd</h4>
+                            <h3 class="skill-title">Programming Languages</h3>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>JavaScript</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
                             <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
+                                <div class="skill-progress" data-width="90%"></div>
                             </div>
                         </div>
+                        
                         <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-react"></i>
+                            <div class="skill-name">
+                                <h4>Python</h4>
+                                <span class="skill-level">Advanced</span>
                             </div>
-                            <h4>startt.Skill 2.endd</h4>
                             <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
+                                <div class="skill-progress" data-width="85%"></div>
                             </div>
                         </div>
-                        <!-- Add more expert level skills as needed -->
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Java</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>C++</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>TypeScript</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Development -->
+                    <div class="skill-category curved-card glow-border fade-in">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="skill-title">Web Development</h3>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>HTML5 & CSS3</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>React.js</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Node.js</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Vue.js</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Responsive Design</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Science & ML -->
+                    <div class="skill-category curved-card glow-border fade-in">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="skill-title">Data Science & ML</h3>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>TensorFlow</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>PyTorch</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Pandas & NumPy</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Data Visualization</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Statistical Analysis</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Skills -->
+                    <div class="skill-category curved-card glow-border fade-in">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="skill-title">Other Skills</h3>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Git & Version Control</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Docker</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Database Design</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>UI/UX Design</h4>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <h4>Agile Methodologies</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skills-category">
-                    <h3>Advanced Level</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-node-js"></i>
-                            </div>
-                            <h4>startt.Skill 3.endd</h4>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <h4>startt.Skill 4.endd</h4>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <!-- Add more advanced level skills as needed -->
+                
+                <!-- Tech Constellation -->
+                <div class="tech-constellation fade-in">
+                    <h3 class="constellation-title">Technologies I've Worked With</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag float-element">React.js</span>
+                        <span class="tech-tag float-element">Vue.js</span>
+                        <span class="tech-tag float-element">Angular</span>
+                        <span class="tech-tag float-element">Node.js</span>
+                        <span class="tech-tag float-element">Express</span>
+                        <span class="tech-tag float-element">Django</span>
+                        <span class="tech-tag float-element">Flask</span>
+                        <span class="tech-tag float-element">TensorFlow</span>
+                        <span class="tech-tag float-element">PyTorch</span>
+                        <span class="tech-tag float-element">MongoDB</span>
+                        <span class="tech-tag float-element">PostgreSQL</span>
+                        <span class="tech-tag float-element">GraphQL</span>
+                        <span class="tech-tag float-element">REST API</span>
+                        <span class="tech-tag float-element">Redux</span>
+                        <span class="tech-tag float-element">Webpack</span>
+                        <span class="tech-tag float-element">Git</span>
+                        <span class="tech-tag float-element">Docker</span>
+                        <span class="tech-tag float-element">AWS</span>
+                        <span class="tech-tag float-element">Firebase</span>
+                        <span class="tech-tag float-element">SASS</span>
+                        <span class="tech-tag float-element">Tailwind CSS</span>
+                        <span class="tech-tag float-element">Figma</span>
                     </div>
                 </div>
-                <div class="skills-category">
-                    <h3>Intermediate Level</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-java"></i>
+                
+                <!-- Tools Section -->
+                <div class="tools-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Tools & Software</h2>
+                        <div class="cosmic-divider"></div>
+                        <p class="section-subtitle">Applications and tools I use on a daily basis</p>
+                    </div>
+                    
+                    <div class="tools-grid stagger-container">
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-github"></i>
                             </div>
-                            <h4>startt.Skill 5.endd</h4>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 60%"></div>
-                            </div>
+                            <div class="tool-name">GitHub</div>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
                                 <i class="fab fa-docker"></i>
                             </div>
-                            <h4>startt.Skill 6.endd</h4>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 55%"></div>
-                            </div>
+                            <div class="tool-name">Docker</div>
                         </div>
-                        <!-- Add more intermediate level skills as needed -->
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3>Beginner Level</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-swift"></i>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-aws"></i>
                             </div>
-                            <h4>startt.Skill 7.endd</h4>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 40%"></div>
-                            </div>
+                            <div class="tool-name">AWS</div>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-rust"></i>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-figma"></i>
                             </div>
-                            <h4>startt.Skill 8.endd</h4>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 35%"></div>
-                            </div>
+                            <div class="tool-name">Figma</div>
                         </div>
-                        <!-- Add more beginner level skills as needed -->
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <div class="tool-name">Git</div>
+                        </div>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="tool-name">MongoDB</div>
+                        </div>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="tool-name">PostgreSQL</div>
+                        </div>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-jira"></i>
+                            </div>
+                            <div class="tool-name">Jira</div>
+                        </div>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-npm"></i>
+                            </div>
+                            <div class="tool-name">npm</div>
+                        </div>
+                        <div class="tool-item stagger-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-slack"></i>
+                            </div>
+                            <div class="tool-name">Slack</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                    </div>
+                    <p>A passionate developer exploring the digital universe</p>
                 </div>
                 <div class="footer-links">
+                    <h3>Navigation</h3>
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="education.html">Education</a>
@@ -165,14 +414,31 @@
                     <a href="cv.html">CV</a>
                     <a href="text-analyzer.html">Text Analyzer</a>
                 </div>
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> startt.Your Name.endd. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year"></span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Page Transition Element -->
+    <div class="page-transition-overlay">
+        <div class="cosmic-warp"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/pageTransitions.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/eventTracker.js"></script>
 </body>
 </html>

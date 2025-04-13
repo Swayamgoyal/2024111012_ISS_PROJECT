@@ -1,153 +1,214 @@
-/* About Section */
-.about-section {
-    padding: 80px 0;
+/* Education Page Styles */
+.education-section {
+    padding: 60px 0;
 }
 
-.about-content {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.about-image {
-    flex: 1;
-    min-width: 300px;
+.timeline {
     position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 50px;
 }
 
-.about-image img {
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-
-.experience-badge {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    background-color: var(--primary-color);
-    color: var(--bg-primary);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    box-shadow: var(--box-shadow);
-}
-
-.experience-badge .years {
-    font-size: 24px;
-}
-
-.experience-badge .text {
-    font-size: 12px;
-    text-align: center;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-text h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: var(--text-primary);
-}
-
-.about-info {
-    margin-top: 30px;
-}
-
-.info-item {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.info-title {
-    min-width: 120px;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-/* Birthplace Section */
-.birthplace-section {
-    padding: 80px 0;
-    background-color: var(--bg-secondary);
-}
-
-.birthplace-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-
-.gallery-image {
-    position: relative;
-}
-
-.gallery-image img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.image-overlay {
+.timeline::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 2px;
     height: 100%;
-    background-color: rgba(10, 25, 47, 0.8);
+    background: linear-gradient(to bottom, var(--galaxy-teal), var(--nebula-purple));
+    border-radius: 1px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -54px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 3px solid var(--space-black);
+    box-shadow: 0 0 0 3px rgba(65, 233, 195, 0.3);
+}
+
+.timeline-content {
+    background: rgba(18, 18, 37, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-color);
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background: rgba(18, 18, 37, 0.7);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    transform: rotate(45deg);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 5px 15px;
+    background: linear-gradient(45deg, var(--nebula-purple), var(--cosmic-blue));
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.timeline-location {
     display: flex;
     align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
 }
 
-.overlay-content {
-    text-align: center;
-    padding: 20px;
-}
-
-.overlay-content h3 {
-    font-size: 20px;
+.timeline-title {
+    font-size: 22px;
+    font-weight: 600;
     margin-bottom: 10px;
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
-.gallery-item:hover .gallery-image img {
-    transform: scale(1.1);
+.timeline-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
 }
 
-.gallery-item:hover .image-overlay {
-    opacity: 1;
+.timeline-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
-.birthplace-description {
-    margin-top: 50px;
+.timeline-achievements {
+    margin-top: 20px;
 }
 
-@media screen and (max-width: 768px) {
-    .about-content {
-        flex-direction: column;
+.timeline-achievements h4 {
+    font-size: 18px;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.timeline-achievements h4 i {
+    font-size: 16px;
+}
+
+.achievement-list {
+    list-style: none;
+}
+
+.achievement-item {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.achievement-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+.education-bg {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    background-image: url('../images/galaxy-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: -1;
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 30px;
     }
     
-    .experience-badge {
-        top: 10px;
-        right: 10px;
+    .timeline-item::before {
+        left: -34px;
+    }
+    
+    .timeline-content::before {
+        display: none;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .education-bg {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-title {
+        font-size: 18px;
+    }
+    
+    .timeline-subtitle {
+        font-size: 14px;
     }
 }

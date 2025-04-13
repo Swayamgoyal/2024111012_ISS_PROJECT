@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae | startt.Your Name.endd</title>
+    <title>Curriculum Vitae | Swayam Goyal</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/cv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preload background images for better performance -->
+    <link rel="preload" href="images/galaxy-bg.jpg" as="image">
+    <link rel="preload" href="images/stars.jpg" as="image">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -32,82 +35,93 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="header-container">
-            <h1>Curriculum Vitae</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / <span>CV</span>
+    <!-- Content Container -->
+    <div class="content-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">Curriculum Vitae</h1>
+                <div class="cosmic-divider"></div>
+                <p class="page-subtitle">Download my comprehensive resume in PDF format</p>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- CV Section -->
-    <section class="cv-section">
-        <div class="container">
-            <div class="cv-content">
-                <div class="cv-preview">
-                    <div class="preview-container">
-                        <img src="images/cv-preview.jpg" alt="CV Preview">
-                        <div class="preview-overlay">
-                            <div class="overlay-content">
-                                <h3>My Curriculum Vitae</h3>
-                                <p>A comprehensive overview of my qualifications, experience, and skills</p>
-                            </div>
+        <!-- CV Section -->
+        <section class="cv-section">
+            <div class="container">
+                <div class="cv-container">
+                    <div class="cv-preview scale-in">
+                        <img src="images/cv-preview.png" alt="CV Preview" class="preview-image">
+                        
+                        <!-- Cosmic particles for visual effect -->
+                        <div class="cosmic-particles">
+                            <div class="particle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+                            <div class="particle" style="top: 30%; left: 80%; animation-delay: 1s;"></div>
+                            <div class="particle" style="top: 50%; left: 15%; animation-delay: 2s;"></div>
+                            <div class="particle" style="top: 70%; left: 70%; animation-delay: 3s;"></div>
+                            <div class="particle" style="top: 90%; left: 40%; animation-delay: 4s;"></div>
+                            <div class="particle" style="top: 20%; left: 60%; animation-delay: 5s;"></div>
+                            <div class="particle" style="top: 40%; left: 30%; animation-delay: 0.5s;"></div>
+                            <div class="particle" style="top: 60%; left: 80%; animation-delay: 1.5s;"></div>
+                            <div class="particle" style="top: 80%; left: 10%; animation-delay: 2.5s;"></div>
                         </div>
                     </div>
-                </div>
-                <div class="cv-download">
-                    <div class="download-card">
-                        <div class="card-header">
-                            <h2>Download My Complete CV</h2>
-                        </div>
-                        <div class="card-body">
-                            <p>For a comprehensive overview of my experience, skills, and qualifications, please download my complete curriculum vitae in PDF format.</p>
-                            <div class="cv-features">
-                                <div class="feature">
-                                    <i class="fas fa-briefcase"></i>
-                                    <span>Professional Experience</span>
+                    
+                    <div class="cv-actions fade-in">
+                        <h2 class="cv-title">My Professional Journey</h2>
+                        <p class="cv-description">
+                            This comprehensive CV details my professional background, including education, work experience, skills, and achievements. It's regularly updated to reflect my latest accomplishments and projects.
+                        </p>
+                        
+                        <div class="download-section">
+                            <div class="download-card curved-card">
+                                <div class="download-header">
+                                    <div class="download-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <h3 class="download-title">Download Full CV</h3>
                                 </div>
-                                <div class="feature">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span>Educational Background</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <span>Technical Skills</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-certificate"></i>
-                                    <span>Certifications</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-project-diagram"></i>
-                                    <span>Project Portfolio</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-users"></i>
-                                    <span>References</span>
-                                </div>
+                                <p class="download-text">
+                                    Get the complete version of my CV in PDF format. This document includes detailed information about my professional experience, academic background, technical skills, and notable achievements.
+                                </p>
+                                <a href="files/your-name-cv.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </a>
                             </div>
-                            <a href="files/startt.your-name.endd-cv.pdf" class="download-btn" download>
-                                <i class="fas fa-file-pdf"></i> Download CV
-                            </a>
+                        </div>
+                        
+                        <div class="cv-features">
+                            <h3 class="features-title">What's Included in My CV</h3>
+                            <ul class="features-list">
+                                <li class="feature-item">Detailed academic background and qualifications</li>
+                                <li class="feature-item">Comprehensive work history and professional experience</li>
+                                <li class="feature-item">Technical skills categorized by proficiency level</li>
+                                <li class="feature-item">Notable projects with descriptions and outcomes</li>
+                                <li class="feature-item">Professional certifications and specialized training</li>
+                                <li class="feature-item">Leadership roles and community involvement</li>
+                                <li class="feature-item">Awards, honors, and recognitions</li>
+                                <li class="feature-item">Publications, presentations, and research contributions</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                    </div>
+                    <p>A passionate developer exploring the digital universe</p>
                 </div>
                 <div class="footer-links">
+                    <h3>Navigation</h3>
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="education.html">Education</a>
@@ -115,14 +129,31 @@
                     <a href="cv.html">CV</a>
                     <a href="text-analyzer.html">Text Analyzer</a>
                 </div>
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> startt.Your Name.endd. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year"></span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Page Transition Element -->
+    <div class="page-transition-overlay">
+        <div class="cosmic-warp"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/pageTransitions.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/eventTracker.js"></script>
 </body>
 </html>

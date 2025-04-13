@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | startt.Your Name.endd</title>
+    <title>About Me | Swayam Goyal</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preload background images for better performance -->
+    <link rel="preload" href="images/galaxy-bg.jpg" as="image">
+    <link rel="preload" href="images/stars.jpg" as="image">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -32,144 +35,105 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="header-container">
-            <h1>About Me</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / <span>About</span>
+    <!-- Content Container -->
+    <div class="content-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">I am an upcoming tech enthusiast who is currently purcuising undergrad degree in IIIT Hyderabad</h1>
+                <div class="cosmic-divider"></div>
+                <p class="page-subtitle">Get to know who I am and what drives my passion</p>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/about-me.jpg" alt="About Me">
-                    <div class="experience-badge">
-                        <span class="years">startt.X.endd</span>
-                        <span class="text">Years<br>Experience</span>
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <h2 class="about-title">Who I Am</h2>
+                        <h3 class="about-subtitle">A tech enthusiast exploring the digital universe</h3>
+                        
+                        <div class="about-description">
+                            <p>Hello! I'm a passionate developer with a keen interest in creating elegant solutions to complex problems. My journey in technology began when I was young, tinkering with computers and trying to understand how everything works.</p>
+                            
+                            <p>I believe that technology should be accessible to everyone and that it has the power to transform lives. This belief drives me to constantly learn new skills and explore emerging technologies.</p>
+                            
+                            <p>When I'm not coding, you can find me exploring nature, reading science fiction, or experimenting with new recipes in the kitchen. I'm also deeply interested in astronomy and space exploration, which inspires the cosmic theme of this website.</p>
+                            
+                            <p>I approach each project with curiosity, creativity, and attention to detail. I'm constantly seeking opportunities to grow and collaborate with like-minded individuals who share my passion for technology and innovation.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="about-text">
-                    <h2>Get to Know Me</h2>
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="terminal-buttons">
-                                <span class="terminal-button red"></span>
-                                <span class="terminal-button yellow"></span>
-                                <span class="terminal-button green"></span>
+                    
+                    <div class="about-photos scale-in">
+                        <div class="photo-gallery">
+                            <div class="photo-item profile-photo">
+                                <img src="images/aboutme.jpg" alt="Swayam Goyal">
+                                <div class="photo-caption">
+                                    <h3>That's me!</h3>
+                                    <p>Exploring the digital cosmos</p>
+                                </div>
                             </div>
-                            <div class="terminal-title">about.js</div>
-                        </div>
-                        <div class="terminal-body">
-                            <pre><code><span class="comment">/**
- * startt.Write a paragraph about yourself here. Include your background,
- * interests, what drives you as a developer, and any personal details
- * you'd like to share. Make it engaging and authentic to give visitors
- * a sense of who you are both professionally and personally.
- *.endd
- */</span></code></pre>
-                        </div>
-                    </div>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <span class="info-title">Name:</span>
-                            <span class="info-value">startt.Your Full Name.endd</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Email:</span>
-                            <span class="info-value">startt.your.email@example.com.endd</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Location:</span>
-                            <span class="info-value">startt.Your City, Country.endd</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Availability:</span>
-                            <span class="info-value">startt.Available for freelance/full-time/etc..endd</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Birthplace Section -->
-    <section class="birthplace-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>My Birthplace</h2>
-                <p>startt.A brief introduction about your birthplace.endd</p>
-            </div>
-            <div class="birthplace-gallery">
-                <div class="gallery-item">
-                    <div class="gallery-image">
-                        <img src="images/birthplace1.jpg" alt="Birthplace Image 1">
-                        <div class="image-overlay">
-                            <div class="overlay-content">
-                                <h3>startt.Location Name 1.endd</h3>
-                                <p>startt.Brief description of this location.endd</p>
+                            <div class="photo-item">
+                                <img src="images/profile.jpg" alt="Swayam Goyal portrait">
+                                <div class="photo-caption">
+                                    <h3>Professional</h3>
+                                    <p>Ready for challenges</p>
+                                </div>
+                            </div>
+                            <div class="photo-item">
+                                <img src="images/birthplace1.jpg" alt="Birthplace">
+                                <div class="photo-caption">
+                                    <h3>My Roots</h3>
+                                    <p>Where it all began</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">
-                        <img src="images/birthplace2.jpg" alt="Birthplace Image 2">
-                        <div class="image-overlay">
-                            <div class="overlay-content">
-                                <h3>startt.Location Name 2.endd</h3>
-                                <p>startt.Brief description of this location.endd</p>
+                
+                <div class="birthplace-section">
+                    <h2 class="birthplace-title">My Birthplace - Rewari</h2>
+                    <div class="birthplace-gallery stagger-container">
+                        <div class="birthplace-card curved-card glow-border stagger-item">
+                            <img src="images/birthplace1.jpg" alt="Birthplace Scenery">
+                            <div class="birthplace-info">
+                                <h3>Beautiful Landscapes</h3>
+                                <p>The natural beauty that shaped my early years</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">
-                        <img src="images/birthplace3.jpg" alt="Birthplace Image 3">
-                        <div class="image-overlay">
-                            <div class="overlay-content">
-                                <h3>startt.Location Name 3.endd</h3>
-                                <p>startt.Brief description of this location.endd</p>
+                        <div class="birthplace-card curved-card glow-border stagger-item">
+                            <img src="images/birthplace2.jpg" alt="Birthplace Culture">
+                            <div class="birthplace-info">
+                                <h3>Rich Culture</h3>
+                                <p>The traditions and heritage I grew up with</p>
+                            </div>
+                        </div>
+                        <div class="birthplace-card curved-card glow-border stagger-item">
+                            <img src="images/birthplace3.jpg" alt="Birthplace Landmark">
+                            <div class="birthplace-info">
+                                <h3>Iconic Landmarks</h3>
+                                <p>Famous places from my hometown</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="birthplace-description">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="terminal-button red"></span>
-                            <span class="terminal-button yellow"></span>
-                            <span class="terminal-button green"></span>
-                        </div>
-                        <div class="terminal-title">birthplace.md</div>
-                    </div>
-                    <div class="terminal-body">
-                        <pre><code><span class="comment"># My Roots
-
-startt.Write about your birthplace here. Include details about the location,
-culture, and what makes it special to you. You can mention notable landmarks,
-traditions, or personal memories that connect you to this place.
-.endd</span></code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                    </div>
+                    <p>A passionate developer exploring the digital universe</p>
                 </div>
                 <div class="footer-links">
+                    <h3>Navigation</h3>
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="education.html">Education</a>
@@ -177,14 +141,31 @@ traditions, or personal memories that connect you to this place.
                     <a href="cv.html">CV</a>
                     <a href="text-analyzer.html">Text Analyzer</a>
                 </div>
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> startt.Your Name.endd. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year"></span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Page Transition Element -->
+    <div class="page-transition-overlay">
+        <div class="cosmic-warp"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/pageTransitions.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/eventTracker.js"></script>
 </body>
 </html>

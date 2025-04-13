@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>startt.Your Name.endd | Portfolio</title>
+    <title>Swayam Goyal | Personal Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preload background images for better performance -->
+    <link rel="preload" href="images/galaxy-bg.jpg" as="image">
+    <link rel="preload" href="images/stars.jpg" as="image">
 </head>
 <body>
     <!-- Navigation -->
@@ -32,59 +35,150 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="glitch" data-text="Hello, I'm">Hello, I'm</h1>
-                    <h2 class="name">Swayam Goyal</h2>
-                    <h3 class="title">Student</h3>
-                    <p class="description">I am an upcoming tech enthusiast </p>
-                    <div class="cta-buttons">
-                        <a href="about.html" class="btn primary-btn">About Me</a>
-                        <a href="cv.html" class="btn secondary-btn">View CV</a>
+    <!-- Content Container - Helps with page transitions -->
+    <div class="content-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text fade-in">
+                        <h1 class="hero-greeting">Hello, I'm <span class="highlight">Swayam Goyal</span></h1>
+                        <h2 class="hero-title">Exploring the <span class="cosmic-text">Digital Universe</span></h2>
+                        <p class="hero-description">
+                            I am a passionate developer with a love for creating elegant solutions. 
+                            My journey through technology has been an adventure of continuous learning and growth.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="about.html" class="btn btn-primary">Discover More</a>
+                            <a href="cv.html" class="btn btn-secondary">View CV</a>
+                        </div>
+                    </div>
+                    <div class="hero-image scale-in">
+                        <div class="profile-frame">
+                            <img src="images/profile.jpg" alt="Swayam Goyal" class="profile-img">
+                            <div class="orbit-container">
+                                <div class="orbit orbit-1"></div>
+                                <div class="orbit orbit-2"></div>
+                                <div class="orbit orbit-3"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                        <img src="images/profile.jpg" alt="Profile Picture">
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Quick Info Section -->
+        <section class="quick-info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card curved-card stagger-item">
+                        <div class="info-icon">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <h3>About Me</h3>
+                        <p>Discover who I am, my journey, and what drives my passion for technology.</p>
+                        <a href="about.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card curved-card stagger-item">
+                        <div class="info-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education</h3>
+                        <p>Explore my educational background, achievements, and academic journey.</p>
+                        <a href="education.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card curved-card stagger-item">
+                        <div class="info-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Skills</h3>
+                        <p>Check out my technical expertise and professional capabilities.</p>
+                        <a href="skills.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card curved-card stagger-item">
+                        <div class="info-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Curriculum Vitae</h3>
+                        <p>View my professional CV to see my complete background and experience.</p>
+                        <a href="cv.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="social-links">
-                <a href="startt.https://github.com/yourusername.endd" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="startt.https://linkedin.com/in/yourusername.endd" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="startt.https://twitter.com/yourusername.endd" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="mailto:startt.youremail@example.com.endd" class="social-link"><i class="fas fa-envelope"></i></a>
+        </section>
+        
+        <!-- Interactive Text Analyzer Preview -->
+        <section class="analyzer-preview-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Text Analysis Tool</h2>
+                    <div class="cosmic-divider"></div>
+                    <p class="section-subtitle">Try my interactive text analyzer that can count letters, words, pronouns, prepositions, and articles.</p>
+                </div>
+                <div class="analyzer-preview curved-card glow-border">
+                    <div class="analyzer-preview-content">
+                        <div class="code-block">
+                            <pre><code>function analyzeText(text) {
+  const words = text.split(/\s+/);
+  const letters = text.match(/[a-zA-Z]/g);
+  const pronouns = words.filter(w => 
+    ['I', 'you', 'he', 'she', 'we', 'they'].includes(w));
+    
+  return {
+    words: words.length,
+    letters: letters.length,
+    pronouns: pronouns.length
+  };
+}</code></pre>
+                            <div class="code-typing-cursor"></div>
+                        </div>
+                        <div class="preview-text">
+                            <p>The advanced text analyzer provides detailed statistics about your text, including:</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Letter, word, and character counts</li>
+                                <li><i class="fas fa-check"></i> Pronouns frequency analysis</li>
+                                <li><i class="fas fa-check"></i> Prepositions usage statistics</li>
+                                <li><i class="fas fa-check"></i> Articles distribution</li>
+                            </ul>
+                            <a href="text-analyzer.html" class="btn btn-primary mt-4">Try Text Analyzer</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="scroll-down">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <div class="arrow">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                    </div>
+                    <p>A passionate developer exploring the digital universe</p>
                 </div>
                 <div class="footer-links">
+                    <h3>Navigation</h3>
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="education.html">Education</a>
                     <a href="skills.html">Skills</a>
                     <a href="cv.html">CV</a>
                     <a href="text-analyzer.html">Text Analyzer</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -93,8 +187,15 @@
         </div>
     </footer>
 
+    <!-- Page Transition Element -->
+    <div class="page-transition-overlay">
+        <div class="cosmic-warp"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/script.js"></script>
-    <script src="js/eventTracker.js"></script>
     <script src="js/pageTransitions.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/eventTracker.js"></script>
 </body>
 </html>

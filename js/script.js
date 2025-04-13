@@ -24,52 +24,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add curved-card and glow-border classes to appropriate elements
-    document.querySelectorAll('.card').forEach(card => {
-        card.classList.add('curved-card');
+    // Code syntax highlighting for display
+    document.querySelectorAll('pre code').forEach(block => {
+        // Basic syntax highlighting for demo
+        let html = block.innerHTML;
+        html = html.replace(/function\s+([a-zA-Z0-9_]+)/g, 'function <span class="function">$1</span>');
+        html = html.replace(/(const|let|var|return|if|else|for|while)/g, '<span class="keyword">$1</span>');
+        html = html.replace(/('.*?'|".*?")/g, '<span class="string">$1</span>');
+        html = html.replace(/(\/\/.*)/g, '<span class="comment">$1</span>');
+        block.innerHTML = html;
     });
     
-    document.querySelectorAll('.skill-item, .terminal-window').forEach(item => {
-        item.classList.add('glow-border');
+    // Animate elements when they come into view
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.fade-in, .slide-in, .scale-in, .stagger-item');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 100) {
+                element.classList.add('visible');
+            }
+        });
+    }
+    
+    // Run animations on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    // Initial animation check
+    animateOnScroll();
+    
+    // Add curved-card and glow-border classes
+    document.querySelectorAll('.info-card, .analyzer-preview').forEach(item => {
+        if (!item.classList.contains('curved-card')) {
+            item.classList.add('curved-card');
+        }
+        if (!item.classList.contains('glow-border')) {
+            item.classList.add('glow-border');
+        }
     });
     
-    // Add floating animation to selected cards
-    document.querySelectorAll('.skill-item:nth-child(odd), .gallery-item:nth-child(even)').forEach(item => {
+    // Add floating animation to selected elements
+    document.querySelectorAll('.info-card:nth-child(odd), .profile-frame').forEach(item => {
         item.classList.add('float');
     });
     
     // Add pulse animation to accent elements
-    document.querySelectorAll('.btn-primary, .timeline-item::before').forEach(item => {
+    document.querySelectorAll('.info-icon, .orbit::before').forEach(item => {
         item.classList.add('pulse');
     });
     
-    // Tabs functionality
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    if (tabBtns.length > 0) {
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const target = btn.getAttribute('data-target');
-                
-                // Update active tab button
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Update active tab content
-                const tabPanes = document.querySelectorAll('.tab-pane');
-                tabPanes.forEach(pane => pane.classList.remove('active'));
-                document.getElementById(target).classList.add('active');
+    // Smooth scroll for scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
             });
         });
     }
     
-    // Parallax effect for background stars
-    window.addEventListener('mousemove', function(e) {
-        const stars = document.querySelector('body::after');
-        if (stars) {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            stars.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
-        }
-    });
+    // Scroll to top when page is loaded
+    window.scrollTo(0, 0);
+    
+    // Load content after a short delay
+    setTimeout(() => {
+        document.querySelector('.content-container').classList.add('loaded');
+    }, 100);
 });

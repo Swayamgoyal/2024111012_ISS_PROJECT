@@ -8,148 +8,136 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add cosmic glow effect to text area on focus
     textInput.addEventListener('focus', function() {
-        this.classList.add('cosmic-glow');
+        this.parentElement.classList.add('cosmic-glow');
     });
     
     textInput.addEventListener('blur', function() {
-        this.classList.remove('cosmic-glow');
+        this.parentElement.classList.remove('cosmic-glow');
     });
+    
+    // Tab navigation
+    const tabBtns = document.querySelectorAll('.results-tabs .tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
+            
+            // Update active tab button
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update active tab content
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            document.getElementById(target).classList.add('active');
+        });
+    });
+    
+    // Word count check
+    function checkWordCount() {
+        if (!textInput.value.trim()) {
+            hideWordCountWarning();
+            return;
+        }
+        
+        const words = textInput.value.trim().split(/\s+/).length;
+        if (words < 10000) {
+            showWordCountWarning();
+        } else {
+            hideWordCountWarning();
+        }
+    }
+    
+    function showWordCountWarning() {
+        const warningEl = document.getElementById('word-count-warning');
+        if (warningEl) {
+            warningEl.classList.remove('hidden');
+        } else {
+            // Create warning if it doesn't exist
+            const warning = document.createElement('div');
+            warning.id = 'word-count-warning';
+            warning.className = 'word-count-warning';
+            warning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> For best results, please enter at least 10,000 words.';
+            textInput.parentElement.parentElement.appendChild(warning);
+        }
+    }
+    
+    function hideWordCountWarning() {
+        const warningEl = document.getElementById('word-count-warning');
+        if (warningEl) {
+            warningEl.classList.add('hidden');
+        }
+    }
+    
+    // Check word count on input
+    textInput.addEventListener('input', checkWordCount);
     
     // Analyze button click handler with loading animation
     analyzeBtn.addEventListener('click', function() {
-        // Add loading state
-        this.classList.add('loading');
-        this.innerHTML = '<span class="loading-text">Analyzing</span>';
+        const text = textInput.value;
         
-        // Simulate processing delay for better UX
+        if (!text) {
+            showNotification('Please enter some text to analyze', 'warning');
+            return;
+        }
+        
+        // Show loading state
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+        this.disabled = true;
+        
+        // Use setTimeout to allow UI to update
         setTimeout(() => {
-            const text = textInput.value;
-            
-            if (!text) {
-                showNotification('Please enter some text to analyze', 'warning');
-                analyzeBtn.classList.remove('loading');
-                analyzeBtn.innerHTML = '<i class="fas fa-code"></i> Analyze Text';
-                return;
-            }
-            
             // Perform analysis
             const basicStats = analyzeBasicStats(text);
             const pronouns = countPronouns(text);
             const prepositions = countPrepositions(text);
             const articles = countArticles(text);
             
-            // Display results with animation
+            // Display results
             displayBasicStats(basicStats);
             displayTableResults(pronouns, 'pronouns-table');
             displayTableResults(prepositions, 'prepositions-table');
             displayTableResults(articles, 'articles-table');
             
+            // Reset button state
+            this.innerHTML = originalText;
+            this.disabled = false;
+            
             // Show success notification
             showNotification('Analysis complete!', 'success');
-            
-            // Remove loading state
-            analyzeBtn.classList.remove('loading');
-            analyzeBtn.innerHTML = '<i class="fas fa-code"></i> Analyze Text';
-            
-            // Switch to results tab if on mobile
-            if (window.innerWidth < 768) {
-                document.querySelector('.tab-btn[data-target="basic-stats"]').click();
-            }
-        }, 800);
+        }, 500); // Simulate processing delay for better UX
     });
     
     // Sample text button click handler
-    if (sampleBtn) {
-        sampleBtn.addEventListener('click', function() {
-            // Add loading state
-            this.classList.add('loading');
-            
-            // Load a sample text (excerpt from a famous book or article)
-            fetch('files/sample-text.txt')
-                .then(response => response.text())
-                .then(data => {
-                    textInput.value = data;
-                    
-                    // Create typing effect
-                    typeText(textInput, data);
-                    
-                    // Show notification
-                    showNotification('Sample text loaded!', 'info');
-                    
-                    // Remove loading state
-                    this.classList.remove('loading');
-                })
-                .catch(error => {
-                    // If file doesn't exist, use a fallback sample text
-                    const sampleText = getSampleText();
-                    textInput.value = sampleText;
-                    
-                    // Create typing effect
-                    typeText(textInput, sampleText);
-                    
-                    // Show notification
-                    showNotification('Sample text loaded!', 'info');
-                    
-                    // Remove loading state
-                    this.classList.remove('loading');
-                });
-        });
-    }
-    
-    // Function to create a typing effect
-    function typeText(element, text) {
-        // Store the full text
-        const fullText = text;
-        
-        // Clear the element
-        element.value = '';
-        
-        // Set cursor to end
-        element.scrollTop = element.scrollHeight;
-        
-        // Skip animation for very long texts
-        if (text.length > 5000) {
-            element.value = fullText;
-            return;
-        }
-        
-        // Type with increasing speed
-        let i = 0;
-        const initialSpeed = 1; // ms per character
-        
-        function typeCharacter() {
-            if (i < fullText.length) {
-                element.value += fullText.charAt(i);
-                i++;
-                
-                // Scroll to bottom as we type
-                element.scrollTop = element.scrollHeight;
-                
-                // Increase speed as we go
-                const speed = Math.max(initialSpeed * (1 - i/fullText.length * 0.9), 0.1);
-                setTimeout(typeCharacter, speed);
-            }
-        }
-        
-        typeCharacter();
-    }
+    sampleBtn.addEventListener('click', function() {
+        // Load a sample text (excerpt from a famous book or article)
+        fetch('files/sample-text.txt')
+            .then(response => response.text())
+            .then(data => {
+                textInput.value = data;
+                checkWordCount();
+            })
+            .catch(error => {
+                // If file doesn't exist, use a fallback sample text
+                textInput.value = getSampleText();
+                checkWordCount();
+            });
+    });
     
     // Function to show notification
     function showNotification(message, type = 'info') {
-        // Remove any existing notification
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
         // Create notification element
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
+        
+        // Set icon based on notification type
+        let icon = 'info-circle';
+        if (type === 'success') icon = 'check-circle';
+        if (type === 'warning') icon = 'exclamation-triangle';
+        
         notification.innerHTML = `
             <div class="notification-content">
-                <i class="fas ${type === 'success' ? 'fa-check-circle' : 
-                               type === 'warning' ? 'fa-exclamation-triangle' : 
-                               'fa-info-circle'}"></i>
+                <i class="fas fa-${icon}"></i>
                 <span>${message}</span>
             </div>
             <button class="notification-close"><i class="fas fa-times"></i></button>
@@ -158,30 +146,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add to DOM
         document.body.appendChild(notification);
         
-        // Add active class after a small delay (for animation)
+        // Animate in
         setTimeout(() => {
-            notification.classList.add('active');
+            notification.classList.add('show');
         }, 10);
         
-        // Add close button functionality
+        // Add close button event
         notification.querySelector('.notification-close').addEventListener('click', () => {
-            notification.classList.remove('active');
+            notification.classList.remove('show');
             setTimeout(() => {
                 notification.remove();
             }, 300);
         });
         
-        // Auto remove after 5 seconds
+        // Auto remove after 3 seconds
         setTimeout(() => {
             if (document.body.contains(notification)) {
-                notification.classList.remove('active');
+                notification.classList.remove('show');
                 setTimeout(() => {
                     if (document.body.contains(notification)) {
                         notification.remove();
                     }
                 }, 300);
             }
-        }, 5000);
+        }, 3000);
     }
     
     // Function to analyze basic statistics
@@ -250,61 +238,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to display basic statistics with animation
     function displayBasicStats(stats) {
-        const elements = {
-            'letters-count': stats.letters,
-            'words-count': stats.words,
-            'spaces-count': stats.spaces,
-            'newlines-count': stats.newlines,
-            'special-count': stats.specialSymbols
-        };
-        
-        for (const [id, value] of Object.entries(elements)) {
-            const element = document.getElementById(id);
+        Object.entries(stats).forEach(([key, value]) => {
+            const element = document.getElementById(`${key}-count`);
             if (element) {
-                // Animate the counting
-                animateCount(element, value);
+                // Animate the counter
+                animateCounter(element, value);
             }
-        }
+        });
     }
     
-    // Function to animate counting
-    function animateCount(element, targetValue) {
-        // Get current value
-        const startValue = parseInt(element.textContent) || 0;
-        const duration = 1500; // ms
-        const frameRate = 60;
-        const totalFrames = duration / (1000 / frameRate);
-        const valueIncrement = (targetValue - startValue) / totalFrames;
-        
-        let currentFrame = 0;
-        let currentValue = startValue;
+    // Animate counter function
+    function animateCounter(element, target) {
+        const duration = 1000;
+        const start = parseInt(element.textContent) || 0;
+        const increment = (target - start) / (duration / 16);
+        let current = start;
         
         const animate = () => {
-            currentFrame++;
-            currentValue += valueIncrement;
+            current += increment;
+            element.textContent = Math.floor(current);
             
-            if (currentFrame <= totalFrames) {
-                element.textContent = Math.round(currentValue);
+            if ((increment > 0 && current < target) || (increment < 0 && current > target)) {
                 requestAnimationFrame(animate);
             } else {
-                element.textContent = targetValue;
-                
-                // Add a pulse effect when done
-                element.classList.add('pulse-once');
-                setTimeout(() => {
-                    element.classList.remove('pulse-once');
-                }, 1000);
+                element.textContent = target;
             }
         };
         
-        animate();
+        requestAnimationFrame(animate);
     }
     
-    // Function to display table results with animation
+    // Function to display table results
     function displayTableResults(counts, tableId) {
         const table = document.getElementById(tableId);
-        if (!table) return;
-        
         const tbody = table.querySelector('tbody');
         
         // Clear previous results
@@ -335,60 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.classList.add('visible');
             }, 50 * index);
         });
-        
-        // Make table sortable
-        makeTableSortable(table);
-    }
-    
-    // Function to make tables sortable
-    function makeTableSortable(table) {
-        const headers = table.querySelectorAll('th');
-        
-        headers.forEach(header => {
-            // Add sortable class and cursor
-            header.classList.add('sortable');
-            
-            header.addEventListener('click', () => {
-                const isAscending = header.classList.contains('asc');
-                
-                // Reset all headers
-                headers.forEach(h => h.classList.remove('asc', 'desc'));
-                
-                // Set new sort direction
-                header.classList.add(isAscending ? 'desc' : 'asc');
-                
-                // Get the index of the clicked header
-                const columnIndex = Array.from(header.parentNode.children).indexOf(header);
-                
-                // Get all rows except the header
-                const tbody = table.querySelector('tbody');
-                const rows = Array.from(tbody.querySelectorAll('tr'));
-                
-                // Sort the rows
-                rows.sort((rowA, rowB) => {
-                    const cellA = rowA.cells[columnIndex].textContent.trim();
-                    const cellB = rowB.cells[columnIndex].textContent.trim();
-                    
-                    // Check if the content is numeric
-                    const numA = parseFloat(cellA);
-                    const numB = parseFloat(cellB);
-                    
-                    if (!isNaN(numA) && !isNaN(numB)) {
-                        return isAscending ? numA - numB : numB - numA;
-                    } else {
-                        return isAscending 
-                            ? cellA.localeCompare(cellB) 
-                            : cellB.localeCompare(cellA);
-                    }
-                });
-                
-                // Remove all rows from the table
-                rows.forEach(row => row.remove());
-                
-                // Add the sorted rows back to the table
-                rows.forEach(row => tbody.appendChild(row));
-            });
-        });
     }
     
     // Function to provide a fallback sample text
@@ -407,23 +319,6 @@ To be, or not to be, that is the question: Whether 'tis nobler in the mind to su
 
 Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.`;
     }
-    
-    // Initialize tabs
-    const tabBtns = document.querySelectorAll('.results-tabs .tab-btn');
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = btn.getAttribute('data-target');
-            
-            // Update active tab button
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Update active tab content
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-            document.getElementById(target).classList.add('active');
-        });
-    });
     
     // Word count warning
     const wordCountWarning = document.createElement('div');

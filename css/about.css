@@ -1,153 +1,210 @@
-/* About Section */
+/* About Page Styles */
 .about-section {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .about-content {
     display: flex;
-    gap: 50px;
-    align-items: center;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
-.about-image {
-    flex: 1;
-    min-width: 300px;
-    position: relative;
-}
-
-.about-image img {
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-
-.experience-badge {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    background-color: var(--primary-color);
-    color: var(--bg-primary);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    box-shadow: var(--box-shadow);
-}
-
-.experience-badge .years {
-    font-size: 24px;
-}
-
-.experience-badge .text {
-    font-size: 12px;
-    text-align: center;
-}
-
 .about-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.about-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-description p {
+    margin-bottom: 20px;
+}
+
+.about-photos {
     flex: 1;
     min-width: 300px;
 }
 
-.about-text h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.photo-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 200px;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.03);
+    border-color: var(--accent-color);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.1);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(10, 10, 15, 0.9), transparent);
     color: var(--text-primary);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
 }
 
-.about-info {
-    margin-top: 30px;
+.photo-item:hover .photo-caption {
+    transform: translateY(0);
 }
 
-.info-item {
-    display: flex;
-    margin-bottom: 15px;
+.photo-caption h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
-.info-title {
-    min-width: 120px;
-    font-weight: 600;
-    color: var(--primary-color);
+.photo-caption p {
+    font-size: 13px;
+    color: var(--text-secondary);
 }
 
-/* Birthplace Section */
+.profile-photo {
+    grid-column: span 2;
+    height: 300px;
+}
+
 .birthplace-section {
-    padding: 80px 0;
-    background-color: var(--bg-secondary);
+    margin-top: 60px;
+}
+
+.birthplace-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+    background: linear-gradient(45deg, var(--galaxy-teal), var(--nova-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .birthplace-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-.gallery-item {
+.birthplace-card {
     position: relative;
+    border-radius: 15px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-
-.gallery-image {
-    position: relative;
-}
-
-.gallery-image img {
-    width: 100%;
     height: 250px;
-    object-fit: cover;
+    box-shadow: var(--box-shadow);
     transition: transform 0.3s ease;
 }
 
-.image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.birthplace-card:hover {
+    transform: translateY(-10px);
+}
+
+.birthplace-card img {
     width: 100%;
     height: 100%;
-    background-color: rgba(10, 25, 47, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.overlay-content {
-    text-align: center;
-    padding: 20px;
-}
-
-.overlay-content h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-}
-
-.gallery-item:hover .gallery-image img {
+.birthplace-card:hover img {
     transform: scale(1.1);
 }
 
-.gallery-item:hover .image-overlay {
-    opacity: 1;
+.birthplace-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(10, 10, 15, 0.9), transparent);
+    color: var(--text-primary);
 }
 
-.birthplace-description {
-    margin-top: 50px;
+.birthplace-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
 }
 
-@media screen and (max-width: 768px) {
+.birthplace-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 992px) {
     .about-content {
         flex-direction: column;
     }
     
-    .experience-badge {
-        top: 10px;
-        right: 10px;
+    .profile-photo {
+        height: 250px;
+    }
+    
+    .birthplace-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-photo {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthplace-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-title {
+        font-size: 28px;
+    }
+    
+    .about-subtitle {
+        font-size: 18px;
     }
 }

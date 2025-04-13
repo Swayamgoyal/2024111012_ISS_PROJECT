@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 name = currentElement.textContent.trim() || 'unnamed list item';
             } else if (currentElement.tagName === 'DIV' || currentElement.tagName === 'SECTION') {
                 // Check for common class names that might indicate the purpose
-                if (currentElement.classList.contains('card') || currentElement.classList.contains('skill-card')) {
+                if (currentElement.classList.contains('card') || currentElement.classList.contains('info-card')) {
                     type = 'card';
                     // Try to find a heading inside the card
                     const heading = currentElement.querySelector('h2, h3, h4, h5, h6');

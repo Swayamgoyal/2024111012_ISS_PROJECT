@@ -1,102 +1,196 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
+    // Get all forms with validation
+    const forms = document.querySelectorAll('form[data-validate="true"]');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    forms.forEach(form => {
+        const formFields = form.querySelectorAll('input, textarea, select');
+        const submitButton = form.querySelector('[type="submit"]');
+        
+        // Add validation on blur for each form field
+        formFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                validateField(field);
+            });
             
-            // Get form fields
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            
-            // Validate inputs
-            let isValid = true;
-            
-            // Name validation
-            if (nameInput.value.trim() === '') {
-                showError(nameInput, 'Name is required');
-                isValid = false;
-            } else {
-                showSuccess(nameInput);
-            }
-            
-            // Email validation
-            if (emailInput.value.trim() === '') {
-                showError(emailInput, 'Email is required');
-                isValid = false;
-            } else if (!isValidEmail(emailInput.value)) {
-                showError(emailInput, 'Please enter a valid email');
-                isValid = false;
-            } else {
-                showSuccess(emailInput);
-            }
-            
-            // Message validation
-            if (messageInput.value.trim() === '') {
-                showError(messageInput, 'Message is required');
-                isValid = false;
-            } else {
-                showSuccess(messageInput);
-            }
-            
-            // If form is valid, simulate form submission
-            if (isValid) {
-                // Show loading state
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Show success message
-                    const formContainer = contactForm.parentElement;
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message';
-                    successMessage.textContent = 'Your message has been sent successfully!';
-                    formContainer.appendChild(successMessage);
-                    
-                    // Reset button
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    
-                    // Remove success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                }, 1500);
-            }
+            // Clear error on input
+            field.addEventListener('input', function() {
+                const errorElement = field.parentElement.querySelector('.field-error');
+                if (errorElement) {
+                    errorElement.remove();
+                }
+                field.classList.remove('invalid');
+            });
         });
         
-        // Helper functions
-        function showError(input, message) {
-            const formControl = input.parentElement;
-            formControl.className = 'form-control error';
-            const errorMessage = formControl.querySelector('.error-message') || document.createElement('small');
-            errorMessage.className = 'error-message';
-            errorMessage.textContent = message;
+        // Validate on form submission
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
             
-            if (!formControl.querySelector('.error-message')) {
-                formControl.appendChild(errorMessage);
+            formFields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                
+                // Scroll to first error
+                const firstError = form.querySelector('.invalid');
+                if (firstError) {
+                    firstError.focus();
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                // Show form error message
+                showFormError(form, 'Please fix the errors above.');
+            }
+        });
+    });
+    
+    // Field validation function
+    function validateField(field) {
+        // Remove existing error message
+        const existingError = field.parentElement.querySelector('.field-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        field.classList.remove('invalid');
+        
+        // Required validation
+        if (field.hasAttribute('required') && !field.value.trim()) {
+            showError(field, 'This field is required');
+            return false;
+        }
+        
+        // Email validation
+        if (field.type === 'email' && field.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value.trim())) {
+                showError(field, 'Please enter a valid email address');
+                return false;
             }
         }
         
-        function showSuccess(input) {
-            const formControl = input.parentElement;
-            formControl.className = 'form-control success';
-            const errorMessage = formControl.querySelector('.error-message');
-            if (errorMessage) {
-                errorMessage.remove();
+        // URL validation
+        if (field.type === 'url' && field.value.trim()) {
+            try {
+                new URL(field.value.trim());
+            } catch (e) {
+                showError(field, 'Please enter a valid URL');
+                return false;
             }
         }
         
-        function isValidEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
+        // Min length validation
+        if (field.hasAttribute('minlength') && field.value.trim()) {
+            const minLength = parseInt(field.getAttribute('minlength'));
+            if (field.value.length < minLength) {
+                showError(field, `Please enter at least ${minLength} characters`);
+                return false;
+            }
         }
+        
+        // Max length validation
+        if (field.hasAttribute('maxlength') && field.value.trim()) {
+            const maxLength = parseInt(field.getAttribute('maxlength'));
+            if (field.value.length > maxLength) {
+                showError(field, `Please enter no more than ${maxLength} characters`);
+                return false;
+            }
+        }
+        
+        // Pattern validation
+        if (field.hasAttribute('pattern') && field.value.trim()) {
+            const pattern = new RegExp(field.getAttribute('pattern'));
+            if (!pattern.test(field.value)) {
+                showError(field, field.getAttribute('data-pattern-message') || 'Please match the requested format');
+                return false;
+            }
+        }
+        
+        // Custom validation based on data attributes
+        if (field.hasAttribute('data-validate-function') && field.value.trim()) {
+            const funcName = field.getAttribute('data-validate-function');
+            if (typeof window[funcName] === 'function') {
+                const isValid = window[funcName](field.value);
+                if (!isValid) {
+                    showError(field, field.getAttribute('data-validate-message') || 'Invalid input');
+                    return false;
+                }
+            }
+        }
+        
+        return true;
     }
+    
+    // Show field error
+    function showError(field, message) {
+        field.classList.add('invalid');
+        
+        const errorElement = document.createElement('div');
+        errorElement.className = 'field-error';
+        errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        
+        field.parentElement.appendChild(errorElement);
+    }
+    
+    // Show form error
+    function showFormError(form, message) {
+        let formError = form.querySelector('.form-error');
+        
+        if (!formError) {
+            formError = document.createElement('div');
+            formError.className = 'form-error';
+            form.prepend(formError);
+        }
+        
+        formError.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+        formError.style.opacity = '0';
+        
+        // Animate in
+        setTimeout(() => {
+            formError.style.opacity = '1';
+        }, 10);
+    }
+    
+    // Add CSS for validation styling
+    const style = document.createElement('style');
+    style.textContent = `
+        .field-error {
+            color: var(--nova-pink);
+            font-size: 14px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: shake 0.3s ease-in-out;
+        }
+        
+        .form-error {
+            background-color: rgba(255, 94, 148, 0.1);
+            border-left: 4px solid var(--nova-pink);
+            color: var(--nova-pink);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .invalid {
+            border-color: var(--nova-pink) !important;
+            box-shadow: 0 0 0 2px rgba(255, 94, 148, 0.2) !important;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(style);
 });

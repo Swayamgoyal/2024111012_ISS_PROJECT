@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education & Achievements | startt.Your Name.endd</title>
+    <title>Education | Swayam Goyal</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/education.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preload background images for better performance -->
+    <link rel="preload" href="images/galaxy-bg.jpg" as="image">
+    <link rel="preload" href="images/stars.jpg" as="image">
 </head>
 <body>
     <!-- Navigation -->
@@ -32,113 +35,146 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="header-container">
-            <h1>Education & Achievements</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / <span>Education</span>
+    <!-- Content Container -->
+    <div class="content-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">Education & Achievements</h1>
+                <div class="cosmic-divider"></div>
+                <p class="page-subtitle">My academic journey and notable accomplishments</p>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Education Section -->
-    <section class="education-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Educational Background</h2>
-                <p>My academic journey and qualifications</p>
-            </div>
-            <div class="education-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">startt.Year - Year.endd</div>
-                        <h3>startt.Degree Name.endd</h3>
-                        <h4>startt.University/College Name.endd</h4>
-                        <p>startt.Description of your studies, major, and any notable projects. Include details about your coursework, research, or any special programs you participated in during this period.endd</p>
-                        <div class="timeline-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Major:</span>
-                                <span class="detail-value">startt.Your Major.endd</span>
+        <!-- Education Section -->
+        <section class="education-section">
+            <div class="container">
+                <div class="education-bg"></div>
+                <div class="timeline">
+                    <!-- University Education -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content curved-card">
+                            <div class="timeline-header">
+                                <div class="timeline-date">2022 - Present</div>
+                                <div class="timeline-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>University Name, City</span>
+                                </div>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">GPA:</span>
-                                <span class="detail-value">startt.Your GPA.endd</span>
+                            <h3 class="timeline-title">Master of Computer Science</h3>
+                            <h4 class="timeline-subtitle">Specialization in Artificial Intelligence</h4>
+                            <p class="timeline-description">
+                                Currently pursuing advanced studies in Computer Science with a focus on AI, machine learning, and data science. Engaged in research projects exploring the applications of deep learning in solving real-world problems.
+                            </p>
+                            <div class="timeline-achievements">
+                                <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                                <ul class="achievement-list">
+                                    <li class="achievement-item">Dean's List for academic excellence (All semesters)</li>
+                                    <li class="achievement-item">Research publication in International Conference on Machine Learning</li>
+                                    <li class="achievement-item">Winner of the university hackathon (2023)</li>
+                                    <li class="achievement-item">Merit-based scholarship recipient</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bachelor's Education -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content curved-card">
+                            <div class="timeline-header">
+                                <div class="timeline-date">2018 - 2022</div>
+                                <div class="timeline-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>University Name, City</span>
+                                </div>
+                            </div>
+                            <h3 class="timeline-title">Bachelor of Engineering</h3>
+                            <h4 class="timeline-subtitle">Computer Science and Engineering</h4>
+                            <p class="timeline-description">
+                                Completed undergraduate studies with a strong foundation in computer science fundamentals, software engineering principles, and system design. Engaged in multiple project-based learning experiences and internships.
+                            </p>
+                            <div class="timeline-achievements">
+                                <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                                <ul class="achievement-list">
+                                    <li class="achievement-item">Graduated with First Class Honors (3.9/4.0 GPA)</li>
+                                    <li class="achievement-item">Best Final Year Project Award for "Smart Home Automation System"</li>
+                                    <li class="achievement-item">President of the University Computer Science Society (2020-2021)</li>
+                                    <li class="achievement-item">Represented university in national coding competitions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- High School Education -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content curved-card">
+                            <div class="timeline-header">
+                                <div class="timeline-date">2016 - 2018</div>
+                                <div class="timeline-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>High School Name, City</span>
+                                </div>
+                            </div>
+                            <h3 class="timeline-title">Higher Secondary Education</h3>
+                            <h4 class="timeline-subtitle">Science Stream (Physics, Chemistry, Mathematics)</h4>
+                            <p class="timeline-description">
+                                Focused on core science subjects with additional studies in computer science. Developed strong analytical and problem-solving skills through participation in various academic competitions and extracurricular activities.
+                            </p>
+                            <div class="timeline-achievements">
+                                <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                                <ul class="achievement-list">
+                                    <li class="achievement-item">Scored 95% in final examinations</li>
+                                    <li class="achievement-item">State-level Mathematics Olympiad finalist</li>
+                                    <li class="achievement-item">School chess champion for two consecutive years</li>
+                                    <li class="achievement-item">Developed the school's first student management system</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Primary Education -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content curved-card">
+                            <div class="timeline-header">
+                                <div class="timeline-date">2006 - 2016</div>
+                                <div class="timeline-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>School Name, City</span>
+                                </div>
+                            </div>
+                            <h3 class="timeline-title">Primary & Secondary Education</h3>
+                            <h4 class="timeline-subtitle">Comprehensive Education with STEM Focus</h4>
+                            <p class="timeline-description">
+                                Received a well-rounded education with early interest in science and technology. Participated actively in school science fairs, robotics clubs, and coding workshops that sparked my passion for computer science.
+                            </p>
+                            <div class="timeline-achievements">
+                                <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                                <ul class="achievement-list">
+                                    <li class="achievement-item">Consistently ranked among top 5 students in class</li>
+                                    <li class="achievement-item">Winner of interschool science project competition</li>
+                                    <li class="achievement-item">School quiz team captain</li>
+                                    <li class="achievement-item">Active member of school's computer club</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">startt.Year - Year.endd</div>
-                        <h3>startt.High School.endd</h3>
-                        <h4>startt.School Name.endd</h4>
-                        <p>startt.Description of your high school education. Include details about your coursework, extracurricular activities, or any special programs you participated in during this period.endd</p>
-                        <div class="timeline-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Stream:</span>
-                                <span class="detail-value">startt.Your Stream.endd</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Grade:</span>
-                                <span class="detail-value">startt.Your Grade/Percentage.endd</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more timeline items for additional education if needed -->
             </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section class="achievements-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Key Achievements</h2>
-                <p>Milestones and accomplishments in my journey</p>
-            </div>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>startt.Achievement 1.endd</h3>
-                    <p>startt.Description of your achievement. Explain its significance and impact on your personal or professional growth.endd</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>startt.Achievement 2.endd</h3>
-                    <p>startt.Description of your achievement. Explain its significance and impact on your personal or professional growth.endd</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3>startt.Achievement 3.endd</h3>
-                    <p>startt.Description of your achievement. Explain its significance and impact on your personal or professional growth.endd</p>
-                </div>
-                <!-- Add more achievement cards as needed -->
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-text">&lt;<span>startt.YourName.endd</span>/&gt;</div>
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                    </div>
+                    <p>A passionate developer exploring the digital universe</p>
                 </div>
                 <div class="footer-links">
+                    <h3>Navigation</h3>
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="education.html">Education</a>
@@ -146,15 +182,31 @@
                     <a href="cv.html">CV</a>
                     <a href="text-analyzer.html">Text Analyzer</a>
                 </div>
+                <div class="footer-social">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> startt.Your Name.endd. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year"></span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Page Transition Element -->
+    <div class="page-transition-overlay">
+        <div class="cosmic-warp"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/pageTransitions.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/eventTracker.js"></script>
 </body>
 </html>
-

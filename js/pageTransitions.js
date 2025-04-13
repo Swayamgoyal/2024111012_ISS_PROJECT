@@ -1,14 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Create transition overlay with cosmic warp effect
-    const overlay = document.createElement('div');
-    overlay.className = 'page-transition-overlay';
-    
-    // Add cosmic warp for the sci-fi effect
-    const cosmicWarp = document.createElement('div');
-    cosmicWarp.className = 'cosmic-warp';
-    overlay.appendChild(cosmicWarp);
-    
-    document.body.appendChild(overlay);
+    const overlay = document.querySelector('.page-transition-overlay');
+    if (!overlay) return;
     
     // Get all internal links
     const internalLinks = document.querySelectorAll('a[href^="/"]:not([target]), a[href^="./"]:not([target]), a[href^="../"]:not([target]), a[href^="#"]:not([target]), a[href*=".html"]:not([target])');
@@ -49,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Navigate after transition completes
             setTimeout(() => {
                 window.location.href = target;
-            }, 700); // Match this timing to your CSS transition
+            }, 700); // Match this timing to CSS transition
         });
     });
     
@@ -66,11 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 contentContainer.classList.add('loaded');
             }
             
-            // Animate skill bars
-            animateSkillBars();
-            
-            // Animate elements
-            animateOnScroll();
+            // Animate staggered items
+            animateStaggeredItems();
         }, 100);
     });
     
@@ -87,42 +77,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (contentContainer) {
                     contentContainer.classList.add('loaded');
                 }
+                
+                // Animate staggered items
+                animateStaggeredItems();
             }, 100);
         }
     });
     
-    // Animate skill bars when they come into view
-    function animateSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        skillBars.forEach(bar => {
-            const barTop = bar.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (barTop < windowHeight - 100) {
-                const width = bar.getAttribute('data-width') || '0%';
-                bar.style.width = width;
-            }
+    function animateStaggeredItems() {
+        const staggerItems = document.querySelectorAll('.stagger-item');
+        staggerItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('visible');
+            }, 100 * (index + 1));
         });
     }
-    
-    // Animate elements when they come into view
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.fade-in, .slide-in, .scale-in, .stagger-item');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight - 100) {
-                element.classList.add('visible');
-            }
-        });
-    }
-    
-    // Run animations on scroll
-    window.addEventListener('scroll', function() {
-        animateSkillBars();
-        animateOnScroll();
-    });
 });
