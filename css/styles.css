@@ -221,17 +221,17 @@ button {
     opacity: 0.3;
 }
 
-.page-header {
-    margin-top: 80px; /* Adjust this value based on your navbar height */
-}
-
 /* Content fade in */
 .content-container {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    padding-top: 80px;
+    padding-top: 90px !important; /* The !important ensures this overrides any other styles */
+    min-height: calc(100vh - 120px);
 }
+
+/* Also make sure the page header has proper spacing */
+.page-header {
+    padding-top: 20px;
+}
+
 
 .content-container.loaded {
     opacity: 1;
@@ -249,7 +249,9 @@ button {
     z-index: 100;
     padding: 15px 0;
     transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    height: 80px; /* Define explicit height */
 }
+
 
 .navbar::after {
     content: '';
