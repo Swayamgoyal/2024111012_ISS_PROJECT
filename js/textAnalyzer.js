@@ -174,33 +174,69 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to analyze basic statistics
     function analyzeBasicStats(text) {
+        // Fix special characters count with an improved regex
         const letters = (text.match(/[a-zA-Z]/g) || []).length;
         const words = text.split(/\s+/).filter(word => word.length > 0).length;
         const spaces = (text.match(/\s/g) || []).length;
         const newlines = (text.match(/\n/g) || []).length;
-        const specialSymbols = (text.match(/[^\w\s]/g) || []).length;
         
-        return { letters, words, spaces, newlines, specialSymbols };
+        // This improved regex will properly catch all special characters
+        // Including punctuation, symbols, and unicode special characters
+        const specialSymbols = (text.match(/[^\w\s]|[_]/g) || []).length;
+        
+        // Add additional useful stats
+        const digits = (text.match(/\d/g) || []).length;
+        const sentences = (text.match(/[.!?]+(?=\s+|$)/g) || []).length;
+        const paragraphs = text.split(/\n\s*\n/).filter(para => para.trim().length > 0).length;
+        
+        return { 
+            letters, 
+            words, 
+            spaces, 
+            newlines, 
+            specialSymbols,
+            digits,
+            sentences,
+            paragraphs
+        };
     }
     
-    // Function to count pronouns
+    // Function to count pronouns with better categorization
     function countPronouns(text) {
-        const pronounList = [
-            'i', 'me', 'my', 'mine', 'myself',
-            'you', 'your', 'yours', 'yourself', 'yourselves',
-            'he', 'him', 'his', 'himself',
-            'she', 'her', 'hers', 'herself',
-            'it', 'its', 'itself',
-            'we', 'us', 'our', 'ours', 'ourselves',
-            'they', 'them', 'their', 'theirs', 'themselves',
-            'who', 'whom', 'whose', 'which', 'what', 'that',
-            'this', 'these', 'those'
-        ];
+        const pronounCategories = {
+            'personal': ['i', 'me', 'my', 'mine', 'myself', 'you', 'your', 'yours', 'yourself', 'yourselves', 
+                        'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself', 
+                        'we', 'us', 'our', 'ours', 'ourselves', 'they', 'them', 'their', 'theirs', 'themselves'],
+            'relative': ['who', 'whom', 'whose', 'which', 'that'],
+            'demonstrative': ['this', 'these', 'that', 'those'],
+            'interrogative': ['who', 'whom', 'whose', 'which', 'what']
+        };
         
-        return countWordsByCategory(text, pronounList);
+        // Flatten all pronouns for initial counting
+        const allPronouns = Object.values(pronounCategories).flat();
+        const counts = countWordsByCategory(text, allPronouns);
+        
+        // Add category information to the results
+        const categorizedCounts = {};
+        
+        for (const [pronoun, count] of Object.entries(counts)) {
+            // Find which category this pronoun belongs to
+            let category = 'other';
+            for (const [cat, pronounList] of Object.entries(pronounCategories)) {
+                if (pronounList.includes(pronoun)) {
+                    category = cat;
+                    break;
+                }
+            }
+            
+            // Add to categorized counts with category prefix
+            categorizedCounts[`${pronoun} (${category})`] = count;
+        }
+        
+        return categorizedCounts;
     }
     
-    // Function to count prepositions
+    // Function to count prepositions with better organization
     function countPrepositions(text) {
         const prepositionList = [
             'about', 'above', 'across', 'after', 'against', 'along', 'amid', 'among',
@@ -212,14 +248,36 @@ document.addEventListener('DOMContentLoaded', function() {
             'underneath', 'until', 'unto', 'up', 'upon', 'with', 'within', 'without'
         ];
         
-        return countWordsByCategory(text, prepositionList);
+        const counts = countWordsByCategory(text, prepositionList);
+        
+        // Group by frequency for better visualization
+        const groupedCounts = {};
+        for (const [prep, count] of Object.entries(counts)) {
+            // Add frequency indicator 
+            let frequencyLabel;
+            if (count > 50) frequencyLabel = "very common";
+            else if (count > 20) frequencyLabel = "common";
+            else if (count > 10) frequencyLabel = "moderate";
+            else frequencyLabel = "rare";
+            
+            groupedCounts[`${prep} (${frequencyLabel})`] = count;
+        }
+        
+        return groupedCounts;
     }
     
-    // Function to count indefinite articles
+    // Function to count indefinite articles with improved display
     function countArticles(text) {
         const articleList = ['a', 'an', 'the'];
+        const counts = countWordsByCategory(text, articleList);
         
-        return countWordsByCategory(text, articleList);
+        // Add article type information
+        const enhancedCounts = {};
+        if (counts['a']) enhancedCounts['a (indefinite)'] = counts['a'];
+        if (counts['an']) enhancedCounts['an (indefinite)'] = counts['an'];
+        if (counts['the']) enhancedCounts['the (definite)'] = counts['the'];
+        
+        return enhancedCounts;
     }
     
     // Helper function to count words by category
@@ -236,18 +294,82 @@ document.addEventListener('DOMContentLoaded', function() {
         return counts;
     }
     
-    // Function to display basic statistics with animation
+    // Function to display basic statistics
     function displayBasicStats(stats) {
-        Object.entries(stats).forEach(([key, value]) => {
-            const element = document.getElementById(`${key}-count`);
-            if (element) {
-                // Animate the counter
-                animateCounter(element, value);
+        document.getElementById('letters-count').textContent = stats.letters;
+        document.getElementById('words-count').textContent = stats.words;
+        document.getElementById('spaces-count').textContent = stats.spaces;
+        document.getElementById('newlines-count').textContent = stats.newlines;
+        document.getElementById('special-count').textContent = stats.specialSymbols;
+        
+        // Display additional stats if elements exist
+        if (document.getElementById('digits-count')) {
+            document.getElementById('digits-count').textContent = stats.digits;
+        }
+        
+        if (document.getElementById('sentences-count')) {
+            document.getElementById('sentences-count').textContent = stats.sentences;
+        }
+        
+        if (document.getElementById('paragraphs-count')) {
+            document.getElementById('paragraphs-count').textContent = stats.paragraphs;
+        }
+    }
+    
+    // Improved helper function for displaying table results
+    function displayTableResults(counts, tableId) {
+        const table = document.getElementById(tableId);
+        const tbody = table.querySelector('tbody');
+        
+        // Clear previous results
+        tbody.innerHTML = '';
+        
+        // Sort by count (descending)
+        const sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+        
+        if (sortedEntries.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="2">No data available</td>';
+            tbody.appendChild(row);
+            return;
+        }
+        
+        // Calculate total for percentage calculation
+        const total = sortedEntries.reduce((sum, [, count]) => sum + count, 0);
+        
+        // Create table rows with staggered animation and percentage
+        sortedEntries.forEach(([word, count], index) => {
+            const percentage = ((count / total) * 100).toFixed(1);
+            const row = document.createElement('tr');
+            row.className = 'stagger-item';
+            
+            // Extract type information if available
+            let wordDisplay = word;
+            let typeInfo = '';
+            
+            const typeMatch = word.match(/\((.*?)\)$/);
+            if (typeMatch) {
+                wordDisplay = word.split(' (')[0];
+                typeInfo = typeMatch[1];
             }
+            
+            row.innerHTML = `
+                <td>
+                    <span class="word-text">${wordDisplay}</span>
+                    ${typeInfo ? `<span class="word-type">${typeInfo}</span>` : ''}
+                </td>
+                <td>${count} <span class="percentage">(${percentage}%)</span></td>
+            `;
+            tbody.appendChild(row);
+            
+            // Staggered animation
+            setTimeout(() => {
+                row.classList.add('visible');
+            }, 50 * index);
         });
     }
     
-    // Animate counter function
+    // Function to animate counter
     function animateCounter(element, target) {
         const duration = 1000;
         const start = parseInt(element.textContent) || 0;
@@ -268,41 +390,6 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(animate);
     }
     
-    // Function to display table results
-    function displayTableResults(counts, tableId) {
-        const table = document.getElementById(tableId);
-        const tbody = table.querySelector('tbody');
-        
-        // Clear previous results
-        tbody.innerHTML = '';
-        
-        // Sort by count (descending)
-        const sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-        
-        if (sortedEntries.length === 0) {
-            const row = document.createElement('tr');
-            row.innerHTML = '<td colspan="2">No data available</td>';
-            tbody.appendChild(row);
-            return;
-        }
-        
-        // Create table rows with staggered animation
-        sortedEntries.forEach(([word, count], index) => {
-            const row = document.createElement('tr');
-            row.className = 'stagger-item';
-            row.innerHTML = `
-                <td>${word}</td>
-                <td>${count}</td>
-            `;
-            tbody.appendChild(row);
-            
-            // Staggered animation
-            setTimeout(() => {
-                row.classList.add('visible');
-            }, 50 * index);
-        });
-    }
-    
     // Function to provide a fallback sample text
     function getSampleText() {
         return `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -319,18 +406,40 @@ To be, or not to be, that is the question: Whether 'tis nobler in the mind to su
 
 Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.`;
     }
-    
-    // Word count warning
-    const wordCountWarning = document.createElement('div');
-    wordCountWarning.className = 'word-count-warning';
-    wordCountWarning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> For best results, please enter at least 10,000 words.';
-    
-    if (textInput) {
-        textInput.parentNode.insertBefore(wordCountWarning, textInput.nextSibling);
-        
-        textInput.addEventListener('input', function() {
-            const wordCount = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
-            wordCountWarning.classList.toggle('show', wordCount > 0 && wordCount < 10000);
-        });
+
+    // Add CSS styling for improved visualization
+    function addCustomStyles() {
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            /* Word type styling */
+            .word-type {
+                display: inline-block;
+                font-size: 12px;
+                color: var(--accent-color);
+                background-color: rgba(65, 233, 195, 0.1);
+                padding: 2px 8px;
+                border-radius: 10px;
+                margin-left: 8px;
+            }
+            
+            .percentage {
+                font-size: 12px;
+                color: var(--text-secondary);
+            }
+            
+            /* Highlight alternate rows */
+            tr:nth-child(even) {
+                background-color: rgba(18, 18, 37, 0.3);
+            }
+            
+            /* Special chars icon styling */
+            .special-chars .stat-icon {
+                color: var(--nova-pink);
+            }
+        `;
+        document.head.appendChild(styleElement);
     }
+    
+    // Initialize additional styles
+    addCustomStyles();
 });

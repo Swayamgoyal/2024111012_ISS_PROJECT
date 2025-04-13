@@ -408,3 +408,71 @@ tr:hover td {
     transform: translateY(0);
 }
 
+/* Add these styles to improve the visual representation of word types */
+.word-type {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--accent-color);
+    background-color: rgba(65, 233, 195, 0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+
+.percentage {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Improved table styling */
+.table-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: linear-gradient(90deg, var(--deep-space), var(--space-gray));
+    color: var(--accent-color);
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tr:hover {
+    background-color: rgba(65, 233, 195, 0.05);
+}
+
+/* Add highlighting for alternate rows */
+tr:nth-child(even) {
+    background-color: rgba(18, 18, 37, 0.3);
+}
+
+/* Animation for the stats cards */
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional custom stat for special characters */
+.stat-card.special-chars .stat-icon {
+    color: var(--nova-pink);
+}
