@@ -223,7 +223,7 @@ button {
 
 /* Content fade in */
 .content-container {
-    padding-top: 80px ; /* The !important ensures this overrides any other styles */
+    padding-top: 80px !important; /* The !important ensures this overrides any other styles */
     min-height: calc(100vh - 120px);
 }
 
