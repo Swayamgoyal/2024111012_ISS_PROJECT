@@ -250,7 +250,6 @@ button {
     padding: 15px 0;
     transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     height: 80px; /* Define explicit height */
-
 }
 
 
