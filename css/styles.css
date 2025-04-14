@@ -226,16 +226,23 @@ button {
 /* Adjust the content container */
 .content-container {
     position: relative;
-    padding-top: 20px; /* Additional spacing from navbar */
     margin-top: 0 !important; /* Override any existing margins */
     opacity: 0; /* Start invisible */
     animation: fadeIn 0.5s ease forwards; /* Fade in smoothly */
+    padding-top: 0;
 }
+
 /* Also make sure the page header has proper spacing */
 .page-header {
-    margin-top: 0 !important; /* Remove any existing margin */
-    padding-top: 20px; /* Add padding instead */
+    margin-top: 70px; /* Just enough space after navbar */
+    padding-top: 0;
 }
+
+h1, .page-title {
+    margin-top: 0;
+    padding-top: 10px;
+}
+
 
 .content-container.loaded {
     opacity: 1;
@@ -252,11 +259,10 @@ button {
     backdrop-filter: blur(10px);
     z-index: 100;
     min-height: unset; /* Override any min-height */
-    padding: 0 20px; /* Reduce vertical padding */
     transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     height: 60px; /* Define explicit height */
+    left: 0;
 }
-
 
 .navbar::after {
     content: '';
@@ -453,8 +459,7 @@ button {
 
 /* =========== Section Styling =========== */
 .section {
-    padding: 100px 0;
-    position: relative;
+    margin-top: 10px;
 }
 
 .section-header {
