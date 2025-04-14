@@ -11,6 +11,20 @@
     <!-- Preload background images for better performance -->
     <link rel="preload" href="images/galaxy-bg.jpg" as="image">
     <link rel="preload" href="images/stars.jpg" as="image">
+    <style>
+        body {
+          visibility: hidden;
+        }
+      </style>
+      <script>
+        // Immediate execution to prevent content shift
+        (function() {
+          // Set initial padding-top to prevent content from being under navbar
+          document.documentElement.style.setProperty('--navbar-height', '70px');
+          document.write('<style>body{padding-top:var(--navbar-height);}</style>');
+        })();
+      </script>
+      
 </head>
 <body>
     <!-- Navigation -->
