@@ -76,7 +76,6 @@ body {
   padding-top: var(--navbar-height); /* Critical fix for navbar issue */
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 /* Star overlay effect */
