@@ -1,121 +1,260 @@
+/**
+ * Cosmic Animations Module
+ * Provides animated effects throughout the space-themed portfolio
+ * @author Swayam Goyal
+ */
+
+// Execute when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Parallax effect for background stars
-    document.addEventListener('mousemove', function(e) {
-        const moveX = (e.clientX / window.innerWidth - 0.5) * 20;
-        const moveY = (e.clientY / window.innerHeight - 0.5) * 20;
-        
-        // Apply parallax to stars background
-        document.body.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
-    });
+    // Initialize all animations
+    initializeAnimations();
     
-    // Animate skill bars when in view
-    const skillBars = document.querySelectorAll('.skill-progress');
+    // Setup scroll-triggered animations
+    setupScrollAnimations();
     
-    function animateSkillBars() {
-        skillBars.forEach(bar => {
-            const barTop = bar.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (barTop < windowHeight - 100) {
-                const width = bar.getAttribute('data-width') || '0%';
-                bar.style.width = width;
-            }
-        });
-    }
+    // Initialize floating elements
+    initializeFloatingElements();
     
-    // Animate elements on scroll
-    function animateOnScroll() {
-        // Elements with fade-in class
-        document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
-            if (isElementInViewport(el)) {
-                el.classList.add('visible');
-            }
-        });
-        
-        // Elements with slide-in class
-        document.querySelectorAll('.slide-in:not(.visible)').forEach(el => {
-            if (isElementInViewport(el)) {
-                el.classList.add('visible');
-            }
-        });
-        
-        // Elements with scale-in class
-        document.querySelectorAll('.scale-in:not(.visible)').forEach(el => {
-            if (isElementInViewport(el)) {
-                el.classList.add('visible');
-            }
-        });
-        
-        // Staggered items
-        const staggerContainers = document.querySelectorAll('.stagger-container');
-        staggerContainers.forEach(container => {
-            if (isElementInViewport(container)) {
-                const items = container.querySelectorAll('.stagger-item');
-                items.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('visible');
-                    }, 100 * index);
-                });
-            }
-        });
-        
-        // Animate skill bars
-        animateSkillBars();
-    }
+    // Create starfield effect
+    createStarfieldEffect();
     
-    // Check if element is in viewport
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top <= window.innerHeight - 100 &&
-            rect.bottom >= 0 &&
-            rect.left <= window.innerWidth &&
-            rect.right >= 0
-        );
-    }
-    
-    // Initial animation check
-    setTimeout(animateOnScroll, 300);
-    
-    // Run animations on scroll
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Typing animation for code elements
-    const codeBlocks = document.querySelectorAll('.code-block pre code');
-    codeBlocks.forEach(block => {
-        const originalText = block.textContent;
-        block.textContent = '';
+    // Setup hover animations
+    setupHoverAnimations();
+});
+
+/**
+ * Initialize all animation effects
+ */
+function initializeAnimations() {
+    // Add animation classes to elements with data attributes
+    document.querySelectorAll('[data-animation]').forEach(element => {
+        const animationType = element.getAttribute('data-animation');
+        const delay = element.getAttribute('data-delay') || 0;
         
-        let i = 0;
-        const typeCode = () => {
-            if (i < originalText.length) {
-                block.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeCode, Math.random() * 10 + 5);
-            }
-        };
+        // Add animation class
+        element.classList.add(`animate-${animationType}`);
         
-        if (isElementInViewport(block.parentElement)) {
-            setTimeout(typeCode, 500);
-        } else {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        setTimeout(typeCode, 500);
-                        observer.disconnect();
-                    }
-                });
-            });
-            observer.observe(block.parentElement);
+        // Add delay style
+        if (delay > 0) {
+            element.style.animationDelay = `${delay}ms`;
         }
     });
+}
+
+/**
+ * Setup scroll-triggered animations using Intersection Observer
+ */
+function setupScrollAnimations() {
+    // Elements to animate on scroll
+    const animatedElements = document.querySelectorAll('.fade-in, .slide-up, .slide-down, .slide-left, .slide-right, .zoom-in, .zoom-out');
     
-    // Add floating animation to selected elements
-    document.querySelectorAll('.float-element').forEach(element => {
-        // Random duration between 3-6 seconds
-        const duration = Math.random() * 3 + 3;
-        // Random delay for more natural movement
-        const delay = Math.random() * 2;
-        element.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+    if (animatedElements.length === 0) return;
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                
+                // Unobserve after animation starts
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, // Trigger when 10% of element is visible
+        rootMargin: '0px 0px -50px 0px' // Slight offset for better timing
     });
-});
+    
+    // Observe all animated elements
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/**
+ * Initialize floating elements with subtle animation
+ */
+function initializeFloatingElements() {
+    // Get all elements with float class
+    const floatingElements = document.querySelectorAll('.float');
+    
+    // Apply floating animation with different offsets
+    floatingElements.forEach((element, index) => {
+        // Create varied animation durations and delays
+        const duration = 3 + (index % 3);
+        const delay = index * 0.2;
+        
+        // Apply animation
+        element.style.animation = `float ${duration}s ease-in-out infinite ${delay}s`;
+    });
+}
+
+/**
+ * Create starfield parallax effect
+ */
+function createStarfieldEffect() {
+    // Only create on larger screens for performance reasons
+    if (window.innerWidth < 768) return;
+    
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars-container';
+    
+    // Add to DOM
+    document.body.appendChild(starsContainer);
+    
+    // Create stars
+    const starCount = Math.floor((window.innerWidth * window.innerHeight) / 8000);
+    
+    for (let i = 0; i < starCount; i++) {
+        createStar(starsContainer, i);
+    }
+    
+    // Add parallax effect to stars
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        
+        starsContainer.style.transform = `translate(${mouseX * -30}px, ${mouseY * -30}px)`;
+    });
+}
+
+/**
+ * Create individual star element
+ */
+function createStar(container, index) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    
+    // Random position
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.left = `${Math.random() * 100}%`;
+    
+    // Random size (0.5px to 3px)
+    const size = 0.5 + Math.random() * 2.5;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    
+    // Random opacity and twinkle animation
+    star.style.opacity = 0.2 + Math.random() * 0.8;
+    
+    const animationDuration = 1 + Math.random() * 4;
+    star.style.animation = `twinkle ${animationDuration}s ease-in-out infinite ${index * 0.05}s`;
+    
+    // Add star to container
+    container.appendChild(star);
+}
+
+/**
+ * Setup hover animation effects
+ */
+function setupHoverAnimations() {
+    // Card hover effects
+    document.querySelectorAll('.card, .tech-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+        });
+    });
+    
+    // Button hover effects
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.classList.add('btn-hover');
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.classList.remove('btn-hover');
+        });
+    });
+}
+
+// Define our CSS animations if not already in stylesheet
+if (!document.getElementById('animation-styles')) {
+    const styleSheet = document.createElement('style');
+    styleSheet.id = 'animation-styles';
+    styleSheet.textContent = `
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        
+        .animate-slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s forwards;
+        }
+        
+        .animate-slide-down {
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideDown 1s forwards;
+        }
+        
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideLeft 1s forwards;
+        }
+        
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideRight 1s forwards;
+        }
+        
+        .animate-zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s forwards;
+        }
+        
+        .animate-zoom-out {
+            opacity: 0;
+            transform: scale(1.2);
+            animation: zoomOut 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes zoomIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes zoomOut {
+            to { opacity: 1; transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+}

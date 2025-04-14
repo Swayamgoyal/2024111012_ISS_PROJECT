@@ -11,14 +11,22 @@
     <!-- Preload background images for better performance -->
     <link rel="preload" href="images/galaxy-bg.jpg" as="image">
     <link rel="preload" href="images/stars.jpg" as="image">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* Ensure nav bar doesn't overlap content */
+        body {
+            padding-top: var(--navbar-height);
+            visibility: visible !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div style="height: 90px; width: 100%;"></div>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                &lt;Swayam Goyal/&gt;
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -51,45 +59,26 @@
         <section class="cv-section">
             <div class="container">
                 <div class="cv-container">
-                    <div class="cv-preview scale-in">
-                        <img src="images/cv-preview.png" alt="CV Preview" class="preview-image">
-                        
-                        <!-- Cosmic particles for visual effect -->
-                        <div class="cosmic-particles">
-                            <div class="particle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
-                            <div class="particle" style="top: 30%; left: 80%; animation-delay: 1s;"></div>
-                            <div class="particle" style="top: 50%; left: 15%; animation-delay: 2s;"></div>
-                            <div class="particle" style="top: 70%; left: 70%; animation-delay: 3s;"></div>
-                            <div class="particle" style="top: 90%; left: 40%; animation-delay: 4s;"></div>
-                            <div class="particle" style="top: 20%; left: 60%; animation-delay: 5s;"></div>
-                            <div class="particle" style="top: 40%; left: 30%; animation-delay: 0.5s;"></div>
-                            <div class="particle" style="top: 60%; left: 80%; animation-delay: 1.5s;"></div>
-                            <div class="particle" style="top: 80%; left: 10%; animation-delay: 2.5s;"></div>
-                        </div>
-                    </div>
-                    
                     <div class="cv-actions fade-in">
                         <h2 class="cv-title">My Professional Journey</h2>
                         <p class="cv-description">
                             This comprehensive CV details my professional background, including education, work experience, skills, and achievements. It's regularly updated to reflect my latest accomplishments and projects.
                         </p>
                         
-                        <div class="download-section">
-                            <div class="download-card curved-card">
-                                <div class="download-header">
-                                    <div class="download-icon">
-                                        <i class="fas fa-file-pdf"></i>
-                                    </div>
-                                    <h3 class="download-title">Download Full CV</h3>
+                        <div class="download-card">
+                            <div class="download-header">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-pdf"></i>
                                 </div>
-                                <p class="download-text">
-                                    Get the complete version of my CV in PDF format. This document includes detailed information about my professional experience, academic background, technical skills, and notable achievements.
-                                </p>
-                                <a href="files/your-name-cv.pdf" class="download-btn" download>
-                                    <i class="fas fa-download"></i>
-                                    Download PDF
-                                </a>
+                                <h3 class="download-title">Download Full CV</h3>
                             </div>
+                            <p class="download-text">
+                                Get the complete version of my CV in PDF format. This document includes detailed information about my professional experience, academic background, technical skills, and notable achievements.
+                            </p>
+                            <a href="files/swayam-goyal-cv.pdf" class="download-btn" download>
+                                <i class="fas fa-download"></i>
+                                Download PDF
+                            </a>
                         </div>
                         
                         <div class="cv-features">
@@ -106,6 +95,61 @@
                             </ul>
                         </div>
                     </div>
+                    
+                    <div class="cv-preview scale-in">
+                        <img src="images/cv-preview.png" alt="CV Preview" class="preview-image">
+                    </div>
+                </div>
+                
+                <!-- Technology Stack Section -->
+                <div class="programs-section">
+                    <h2 class="programs-title">Known Programs</h2>
+                    
+                    <div class="tech-grid">
+                        <!-- Programming Languages -->
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">Programming Languages</h3>
+                            <div class="tech-icons">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" class="tech-icon" title="C">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="tech-icon" title="C++">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="tech-icon" title="Java">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-icon" title="Python">
+                            </div>
+                        </div>
+                        
+                        <!-- Web Development -->
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">Web Development</h3>
+                            <div class="tech-icons">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="tech-icon" title="Node.js">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="tech-icon" title="React">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="tech-icon" title="Angular">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="tech-icon" title="HTML5">
+                            </div>
+                        </div>
+                        
+                        <!-- API Development -->
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">API Development</h3>
+                            <div class="tech-icons">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" alt="GraphQL" class="tech-icon" title="GraphQL">
+                                <img src="https://www.vectorlogo.zone/logos/grpcio/grpcio-icon.svg" alt="gRPC" class="tech-icon" title="gRPC">
+                                <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" class="tech-icon" title="Postman">
+                                <img src="https://img.icons8.com/ios-filled/452/rest-api.png" alt="REST" class="tech-icon" title="REST">
+                            </div>
+                        </div>
+                        
+                        <!-- Databases -->
+                        <div class="tech-category">
+                            <h3 class="tech-category-title">Databases</h3>
+                            <div class="tech-icons">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="tech-icon" title="SQL">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="tech-icon" title="MongoDB">
+                                <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="Firebase" class="tech-icon" title="Firebase">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="tech-icon" title="PostgreSQL">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -117,7 +161,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                        &lt;Swayam Goyal/&gt;
                     </div>
                     <p>A passionate developer exploring the digital universe</p>
                 </div>
@@ -141,20 +185,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Swayam Goyal. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year">2025</span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Page Transition Element -->
-    <div class="page-transition-overlay">
-        <div class="cosmic-warp"></div>
-    </div>
-
     <!-- Scripts -->
     <script src="js/script.js"></script>
-    <script src="js/pageTransitions.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/eventTracker.js"></script>
 </body>
 </html>

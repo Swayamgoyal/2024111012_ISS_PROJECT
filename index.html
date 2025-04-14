@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swayam Goyal | Personal Portfolio</title>
+    <title>Swayam Goyal | Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,14 +11,14 @@
     <!-- Preload background images for better performance -->
     <link rel="preload" href="images/galaxy-bg.jpg" as="image">
     <link rel="preload" href="images/stars.jpg" as="image">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div style="height: 90px; width: 100%;"></div>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                &lt;Swayam Goyal/&gt;
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
@@ -36,117 +36,172 @@
         </div>
     </nav>
 
-    <!-- Content Container - Helps with page transitions -->
+    <!-- Content Container -->
     <div class="content-container">
         <!-- Hero Section -->
         <section class="hero-section">
-            <div class="container">
+            <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="hero-text fade-in">
-                        <h1 class="hero-greeting">Hello, I'm <span class="highlight">Swayam Goyal</span></h1>
-                        <h2 class="hero-title">Exploring the <span class="cosmic-text">Digital Universe</span></h2>
-                        <p class="hero-description">
-                            I am a passionate developer with a love for creating elegant solutions. 
-                            My journey through technology has been an adventure of continuous learning and growth.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="about.html" class="btn btn-primary">Discover More</a>
-                            <a href="cv.html" class="btn btn-secondary">View CV</a>
-                        </div>
+                    <p class="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-title">Swayam <span class="text-gradient">Goyal</span></h1>
+                    <h2 class="hero-subtitle">
+                        <span class="typing-text">Developer & Creator</span>
+                    </h2>
+                    <p class="hero-description">
+                        A passionate software developer exploring the digital universe. I create elegant solutions through code, bringing ideas to life with creativity and precision.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="about.html" class="btn btn-primary">About Me <i class="fas fa-arrow-right"></i></a>
+                        <a href="cv.html" class="btn btn-secondary">View CV</a>
                     </div>
-                    <div class="hero-image scale-in">
+                </div>
+                <div class="hero-image">
+                    <div class="profile-wrapper">
                         <div class="profile-frame">
-                            <img src="images/profile.jpg" alt="Swayam Goyal" class="profile-img">
-                            <div class="orbit-container">
-                                <div class="orbit orbit-1"></div>
-                                <div class="orbit orbit-2"></div>
-                                <div class="orbit orbit-3"></div>
-                            </div>
+                            <img src="images/profile.jpg" alt="Swayam Goyal" class="profile-pic">
+                        </div>
+                        <div class="orbit-container">
+                            <div class="orbit orbit-1"></div>
+                            <div class="orbit orbit-2"></div>
+                            <div class="orbit orbit-3"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="scroll-indicator">
-                <span>Scroll Down</span>
-                <i class="fas fa-chevron-down"></i>
             </div>
         </section>
 
-        <!-- Quick Info Section -->
-        <section class="quick-info-section">
-            <div class="container">
-                <div class="info-grid">
-                    <div class="info-card curved-card stagger-item">
-                        <div class="info-icon">
-                            <i class="fas fa-user-astronaut"></i>
-                        </div>
-                        <h3>About Me</h3>
-                        <p>Discover who I am, my journey, and what drives my passion for technology.</p>
-                        <a href="about.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <!-- About Preview Section -->
+        <section class="about-preview-section">
+            <div class="container about-preview-container">
+                <div class="about-preview-content">
+                    <h2 class="section-title gradient-title">About Me</h2>
+                    <div class="about-preview-text">
+                        <p>I am a software developer with a passion for creating innovative digital solutions. My journey in the tech world began with my fascination for coding and problem-solving. I believe in continuous learning and staying updated with the latest technologies to deliver the best results.</p>
+                        <p>With expertise in various programming languages and frameworks, I specialize in developing applications that are not only functional but also provide exceptional user experiences.</p>
                     </div>
-                    <div class="info-card curved-card stagger-item">
-                        <div class="info-icon">
-                            <i class="fas fa-graduation-cap"></i>
+                    <a href="about.html" class="btn btn-primary">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="about-preview-image">
+                    <div class="about-image-grid">
+                        <div class="about-image-item about-image-main">
+                            <img src="images/aboutme.jpg" alt="About Swayam">
                         </div>
-                        <h3>Education</h3>
-                        <p>Explore my educational background, achievements, and academic journey.</p>
-                        <a href="education.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="info-card curved-card stagger-item">
-                        <div class="info-icon">
-                            <i class="fas fa-laptop-code"></i>
+                        <div class="about-image-item">
+                            <img src="images/birthplace1.jpg" alt="Birthplace">
                         </div>
-                        <h3>Skills</h3>
-                        <p>Check out my technical expertise and professional capabilities.</p>
-                        <a href="skills.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="info-card curved-card stagger-item">
-                        <div class="info-icon">
-                            <i class="fas fa-file-alt"></i>
+                        <div class="about-image-item">
+                            <img src="images/birthplace2.jpg" alt="Hometown">
                         </div>
-                        <h3>Curriculum Vitae</h3>
-                        <p>View my professional CV to see my complete background and experience.</p>
-                        <a href="cv.html" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Interactive Text Analyzer Preview -->
-        <section class="analyzer-preview-section">
+
+        <!-- Skills Preview Section -->
+        <section class="skills-preview-section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Text Analysis Tool</h2>
-                    <div class="cosmic-divider"></div>
-                    <p class="section-subtitle">Try my interactive text analyzer that can count letters, words, pronouns, prepositions, and articles.</p>
+                <div class="skills-preview-title">
+                    <h2 class="section-title gradient-title">My Expertise</h2>
                 </div>
-                <div class="analyzer-preview curved-card glow-border">
-                    <div class="analyzer-preview-content">
-                        <div class="code-block">
-                            <pre><code>function analyzeText(text) {
-  const words = text.split(/\s+/);
-  const letters = text.match(/[a-zA-Z]/g);
-  const pronouns = words.filter(w => 
-    ['I', 'you', 'he', 'she', 'we', 'they'].includes(w));
-    
-  return {
-    words: words.length,
-    letters: letters.length,
-    pronouns: pronouns.length
-  };
-}</code></pre>
-                            <div class="code-typing-cursor"></div>
+                <div class="skills-preview-grid">
+                    <div class="skill-category-card">
+                        <div class="skill-category-icon">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <div class="preview-text">
-                            <p>The advanced text analyzer provides detailed statistics about your text, including:</p>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Letter, word, and character counts</li>
-                                <li><i class="fas fa-check"></i> Pronouns frequency analysis</li>
-                                <li><i class="fas fa-check"></i> Prepositions usage statistics</li>
-                                <li><i class="fas fa-check"></i> Articles distribution</li>
-                            </ul>
-                            <a href="text-analyzer.html" class="btn btn-primary mt-4">Try Text Analyzer</a>
+                        <h3 class="skill-category-name">Programming</h3>
+                        <ul class="skill-list">
+                            <li class="skill-list-item">C/C++ Programming</li>
+                            <li class="skill-list-item">Java Development</li>
+                            <li class="skill-list-item">Python Scripting</li>
+                            <li class="skill-list-item">Algorithm Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category-card">
+                        <div class="skill-category-icon">
+                            <i class="fas fa-globe"></i>
                         </div>
+                        <h3 class="skill-category-name">Web Development</h3>
+                        <ul class="skill-list">
+                            <li class="skill-list-item">Front-end Development</li>
+                            <li class="skill-list-item">React.js Applications</li>
+                            <li class="skill-list-item">Node.js Backend</li>
+                            <li class="skill-list-item">Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category-card">
+                        <div class="skill-category-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="skill-category-name">Database Management</h3>
+                        <ul class="skill-list">
+                            <li class="skill-list-item">SQL Database Design</li>
+                            <li class="skill-list-item">MongoDB NoSQL</li>
+                            <li class="skill-list-item">Data Modeling</li>
+                            <li class="skill-list-item">Query Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="skills.html" class="btn btn-primary">View All Skills <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-title">
+                    <h2 class="section-title gradient-title">Get In Touch</h2>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <p class="contact-subtitle">Feel free to reach out to me for collaboration, questions, or just to say hello!</p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p>swayam.goyal@example.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Location</h4>
+                                    <p>New Delhi, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <h4>Connect With Me</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -159,7 +214,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <div class="logo-text">&lt;<span>Swayam Goyal</span>/&gt;</div>
+                        &lt;Swayam Goyal/&gt;
                     </div>
                     <p>A passionate developer exploring the digital universe</p>
                 </div>
@@ -183,20 +238,16 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Swayam Goyal. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year">2025</span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Page Transition Element -->
-    <div class="page-transition-overlay">
-        <div class="cosmic-warp"></div>
-    </div>
-
     <!-- Scripts -->
     <script src="js/script.js"></script>
-    <script src="js/pageTransitions.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/pageTransitions.js"></script>
+    <script src="js/formvalidation.js"></script>
     <script src="js/eventTracker.js"></script>
 </body>
 </html>

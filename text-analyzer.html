@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Analyzer | Your Name</title>
+    <title>Text Analyzer | Swayam Goyal</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/text-analyzer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,14 +11,14 @@
     <!-- Preload background images for better performance -->
     <link rel="preload" href="images/galaxy-bg.jpg" as="image">
     <link rel="preload" href="images/stars.jpg" as="image">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div style="height: 90px; width: 100%;"></div>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-text">&lt;<span>Your Name</span>/&gt;</div>
+                &lt;Swayam Goyal/&gt;
             </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -43,176 +43,204 @@
             <div class="container">
                 <h1 class="page-title">Text Analyzer</h1>
                 <div class="cosmic-divider"></div>
-                <p class="page-subtitle">Analyze text to count letters, words, pronouns, prepositions, and articles</p>
+                <p class="page-subtitle">Analyze and extract insights from any text with this powerful tool</p>
             </div>
         </header>
 
-        <!-- Text Analyzer Section -->
+        <!-- Analyzer Section -->
         <section class="analyzer-section">
             <div class="container">
                 <div class="analyzer-content">
-                    <div class="input-container curved-card glow-border">
+                    <!-- Input Container -->
+                    <div class="input-container">
                         <div class="terminal-header">
                             <div class="terminal-buttons">
-                                <span class="terminal-button red"></span>
-                                <span class="terminal-button yellow"></span>
-                                <span class="terminal-button green"></span>
+                                <div class="terminal-button red"></div>
+                                <div class="terminal-button yellow"></div>
+                                <div class="terminal-button green"></div>
                             </div>
-                            <div class="terminal-title">text-input.txt</div>
+                            <div class="terminal-title">Text Input</div>
                         </div>
                         <div class="terminal-body">
-                            <textarea id="text-input" placeholder="Enter text (10,000+ words) to analyze..."></textarea>
-                        </div>
-                        <div class="button-group">
-                            <button id="analyze-btn" class="btn btn-primary">
-                                <i class="fas fa-code"></i> Analyze Text
-                            </button>
-                            <button id="sample-btn" class="btn btn-secondary">
-                                <i class="fas fa-file-alt"></i> Load Sample Text
-                            </button>
-                        </div>
-                        <div id="word-count-warning" class="word-count-warning hidden">
-                            <i class="fas fa-exclamation-triangle"></i> For best results, please enter at least 10,000 words.
+                            <textarea id="text-input" placeholder="Enter your text here for analysis..."></textarea>
+                            <div class="word-count-warning hidden" id="word-count-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>For optimal performance, consider adding more text for detailed analysis.</span>
+                            </div>
+                            <div class="button-group">
+                                <button id="analyze-btn" class="btn btn-primary">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>Analyze Text</span>
+                                </button>
+                                <button id="sample-btn" class="btn btn-secondary">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Load Sample Text</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="results-container curved-card glow-border">
-                        <div class="results-tabs">
-                            <button class="tab-btn active" data-target="basic-stats">Basic Stats</button>
-                            <button class="tab-btn" data-target="pronouns">Pronouns</button>
-                            <button class="tab-btn" data-target="prepositions">Prepositions</button>
-                            <button class="tab-btn" data-target="articles">Articles</button>
+                    <!-- Results Container -->
+                    <div class="results-container">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="terminal-button red"></div>
+                                <div class="terminal-button yellow"></div>
+                                <div class="terminal-button green"></div>
+                            </div>
+                            <div class="terminal-title">Analysis Results</div>
                         </div>
-                        <div class="results-content">
-                            <div id="basic-stats" class="tab-pane active">
-                                <h3>Basic Statistics</h3>
-                                <div class="stats-grid">
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-font"></i>
+                        <div class="terminal-body">
+                            <!-- Results Tabs -->
+                            <div class="results-tabs">
+                                <button class="tab-btn active" data-target="basic-stats">Basic Statistics</button>
+                                <button class="tab-btn" data-target="pronouns">Pronouns</button>
+                                <button class="tab-btn" data-target="prepositions">Prepositions</button>
+                                <button class="tab-btn" data-target="articles">Articles</button>
+                            </div>
+                            
+                            <!-- Results Content -->
+                            <div class="results-content">
+                                <!-- Basic Stats Tab -->
+                                <div id="basic-stats" class="tab-pane active">
+                                    <div class="stats-grid">
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-font"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Letters</h4>
+                                                <div class="stat-count" id="letters-count">0</div>
+                                            </div>
                                         </div>
-                                        <div class="stat-info">
-                                            <h4>Letters</h4>
-                                            <div id="letters-count" class="stat-count">0</div>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-file-word"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Words</h4>
+                                                <div class="stat-count" id="words-count">0</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-file-word"></i>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-grip-lines-vertical"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Spaces</h4>
+                                                <div class="stat-count" id="spaces-count">0</div>
+                                            </div>
                                         </div>
-                                        <div class="stat-info">
-                                            <h4>Words</h4>
-                                            <div id="words-count" class="stat-count">0</div>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-paragraph"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>New Lines</h4>
+                                                <div class="stat-count" id="newlines-count">0</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-grip-lines"></i>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-at"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Special Symbols</h4>
+                                                <div class="stat-count" id="special-count">0</div>
+                                            </div>
                                         </div>
-                                        <div class="stat-info">
-                                            <h4>Spaces</h4>
-                                            <div id="spaces-count" class="stat-count">0</div>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-sort-numeric-up"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Digits</h4>
+                                                <div class="stat-count" id="digits-count">0</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-paragraph"></i>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-quote-right"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Sentences</h4>
+                                                <div class="stat-count" id="sentences-count">0</div>
+                                            </div>
                                         </div>
-                                        <div class="stat-info">
-                                            <h4>Newlines</h4>
-                                            <div id="newlines-count" class="stat-count">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card special-chars">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-asterisk"></i>
-                                        </div>
-                                        <div class="stat-info">
-                                            <h4>Special Symbols</h4>
-                                            <div id="special-count" class="stat-count">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-calculator"></i>
-                                        </div>
-                                        <div class="stat-info">
-                                            <h4>Digits</h4>
-                                            <div id="digits-count" class="stat-count">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-align-left"></i>
-                                        </div>
-                                        <div class="stat-info">
-                                            <h4>Sentences</h4>
-                                            <div id="sentences-count" class="stat-count">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-indent"></i>
-                                        </div>
-                                        <div class="stat-info">
-                                            <h4>Paragraphs</h4>
-                                            <div id="paragraphs-count" class="stat-count">0</div>
+                                        
+                                        <div class="stat-card">
+                                            <div class="stat-icon">
+                                                <i class="fas fa-indent"></i>
+                                            </div>
+                                            <div class="stat-info">
+                                                <h4>Paragraphs</h4>
+                                                <div class="stat-count" id="paragraphs-count">0</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="pronouns" class="tab-pane">
-                                <h3>Pronouns Count</h3>
-                                <div class="table-container">
-                                    <table id="pronouns-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Pronoun</th>
-                                                <th>Count</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="2">No data available</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                
+                                <!-- Pronouns Tab -->
+                                <div id="pronouns" class="tab-pane">
+                                    <div class="table-container">
+                                        <table id="pronouns-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pronoun</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">No data available</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="prepositions" class="tab-pane">
-                                <h3>Prepositions Count</h3>
-                                <div class="table-container">
-                                    <table id="prepositions-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Preposition</th>
-                                                <th>Count</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="2">No data available</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                
+                                <!-- Prepositions Tab -->
+                                <div id="prepositions" class="tab-pane">
+                                    <div class="table-container">
+                                        <table id="prepositions-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Preposition</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">No data available</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="articles" class="tab-pane">
-                                <h3>Articles Count</h3>
-                                <div class="table-container">
-                                    <table id="articles-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Article</th>
-                                                <th>Count</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="2">No data available</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                
+                                <!-- Articles Tab -->
+                                <div id="articles" class="tab-pane">
+                                    <div class="table-container">
+                                        <table id="articles-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Article</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">No data available</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +256,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <div class="logo-text">&lt;<span>Your Name</span>/&gt;</div>
+                        &lt;Swayam Goyal/&gt;
                     </div>
                     <p>A passionate developer exploring the digital universe</p>
                 </div>
@@ -252,21 +280,14 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Your Name. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year">2025</span> Swayam Goyal. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Page Transition Element -->
-    <div class="page-transition-overlay">
-        <div class="cosmic-warp"></div>
-    </div>
-
     <!-- Scripts -->
     <script src="js/script.js"></script>
-    <script src="js/pageTransitions.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/eventTracker.js"></script>
     <script src="js/textAnalyzer.js"></script>
+    <script src="js/eventTracker.js"></script>
 </body>
 </html>

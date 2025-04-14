@@ -1,87 +1,144 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Track initial page view
-    logEvent('view', 'page', document.title);
+/**
+ * Event Tracker Module
+ * Tracks user interactions for analytics purposes
+ * Author: Swayam Goyal
+ */
+
+(function() {
+    // Store events to avoid repeated logging
+    const loggedEvents = new Set();
     
-    // Track all click events
+    // Track all clicks
     document.addEventListener('click', function(e) {
-        const target = e.target;
-        const eventObject = determineEventObject(target);
-        logEvent('click', eventObject.type, eventObject.name);
+        // Find closest interactive element or use target
+        const element = e.target.closest('a, button, .clickable, [role="button"]') || e.target;
+        
+        if (element) {
+            const elementType = element.tagName.toLowerCase();
+            const elementId = element.id || 'unknown';
+            const elementText = element.textContent.trim().substring(0, 20) || 'empty';
+            const timestamp = new Date().toISOString();
+            
+            // Create unique event ID to prevent duplicates
+            const eventId = `click_${elementType}_${elementId}_${Date.now()}`;
+            
+            // Only log if not already logged in this session
+            if (!loggedEvents.has(eventId)) {
+                loggedEvents.add(eventId);
+                console.log(`${timestamp}, click, ${elementType}#${elementId}:${elementText}`);
+            }
+        }
     });
     
-    // Function to determine the type of clicked object
-    function determineEventObject(element) {
-        // Default values
-        let type = 'unknown';
-        let name = 'unknown';
-        
-        // Check element and its parents to find the most meaningful description
-        let currentElement = element;
-        
-        // Try to get the most specific element
-        while (currentElement && type === 'unknown') {
-            // Check for common elements
-            if (currentElement.tagName === 'A') {
-                type = 'link';
-                name = currentElement.textContent.trim() || currentElement.getAttribute('href') || 'unnamed link';
-            } else if (currentElement.tagName === 'BUTTON') {
-                type = 'button';
-                name = currentElement.textContent.trim() || 'unnamed button';
-            } else if (currentElement.tagName === 'IMG') {
-                type = 'image';
-                name = currentElement.getAttribute('alt') || 'unnamed image';
-            } else if (currentElement.tagName === 'INPUT') {
-                if (currentElement.type === 'text' || currentElement.type === 'email' || currentElement.type === 'password') {
-                    type = 'text input';
-                    name = currentElement.getAttribute('placeholder') || currentElement.getAttribute('name') || 'unnamed input';
-                } else if (currentElement.type === 'checkbox') {
-                    type = 'checkbox';
-                    name = currentElement.getAttribute('name') || 'unnamed checkbox';
-                } else if (currentElement.type === 'radio') {
-                    type = 'radio button';
-                    name = currentElement.getAttribute('name') || 'unnamed radio';
-                } else if (currentElement.type === 'submit') {
-                    type = 'submit button';
-                    name = currentElement.value || 'submit';
-                } else {
-                    type = 'input';
-                    name = currentElement.getAttribute('name') || 'unnamed input';
-                }
-            } else if (currentElement.tagName === 'TEXTAREA') {
-                type = 'text area';
-                name = currentElement.getAttribute('placeholder') || currentElement.getAttribute('name') || 'unnamed textarea';
-            } else if (currentElement.tagName === 'SELECT') {
-                type = 'dropdown';
-                name = currentElement.getAttribute('name') || 'unnamed dropdown';
-            } else if (currentElement.tagName === 'LABEL') {
-                type = 'label';
-                name = currentElement.textContent.trim() || 'unnamed label';
-            } else if (currentElement.tagName === 'LI') {
-                type = 'list item';
-                name = currentElement.textContent.trim() || 'unnamed list item';
-            } else if (currentElement.tagName === 'DIV' || currentElement.tagName === 'SECTION') {
-                // Check for common class names that might indicate the purpose
-                if (currentElement.classList.contains('card') || currentElement.classList.contains('info-card')) {
-                    type = 'card';
-                    // Try to find a heading inside the card
-                    const heading = currentElement.querySelector('h2, h3, h4, h5, h6');
-                    name = heading ? heading.textContent.trim() : 'unnamed card';
-                } else if (currentElement.classList.contains('btn') || currentElement.classList.contains('button')) {
-                    type = 'button';
-                    name = currentElement.textContent.trim() || 'unnamed button';
-                }
-            }
-            
-            // Move up to parent if we haven't identified the element type
-            currentElement = type === 'unknown' ? currentElement.parentElement : null;
-        }
-        
-        return { type, name };
-    }
-
-    // Function to log events to console
-    function logEvent(eventType, objectType, objectName) {
+    // Track page views
+    window.addEventListener('load', function() {
         const timestamp = new Date().toISOString();
-        console.log(`${timestamp}, ${eventType}, ${objectType}: ${objectName}`);
-    }
-});
+        const pagePath = window.location.pathname.split('/').pop() || 'index.html';
+        console.log(`${timestamp}, pageview, ${pagePath}`);
+    });
+    
+    // Track element visibility (when elements enter viewport)
+    const observeElements = function() {
+        const elements = document.querySelectorAll('.track-visibility');
+        
+        if (elements.length === 0) return;
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    const elementId = element.id || 'unknown';
+                    const elementType = element.tagName.toLowerCase();
+                    const timestamp = new Date().toISOString();
+                    
+                    // Create unique event ID
+                    const eventId = `visible_${elementType}_${elementId}`;
+                    
+                    if (!loggedEvents.has(eventId)) {
+                        loggedEvents.add(eventId);
+                        console.log(`${timestamp}, visible, ${elementType}#${elementId}`);
+                    }
+                    
+                    // Stop observing after first visibility
+                    observer.unobserve(element);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    };
+    
+    // Track hover events on interactive elements
+    const trackHoverEvents = function() {
+        const elements = document.querySelectorAll('a, button, .clickable, [role="button"]');
+        
+        elements.forEach(element => {
+            // Use mouseenter instead of mouseover to prevent excessive logging
+            element.addEventListener('mouseenter', function() {
+                const elementType = this.tagName.toLowerCase();
+                const elementId = this.id || 'unknown';
+                const elementText = this.textContent.trim().substring(0, 20) || 'empty';
+                const timestamp = new Date().toISOString();
+                
+                // Create unique event ID with a 2-second cooldown
+                const eventId = `hover_${elementType}_${elementId}`;
+                
+                if (!loggedEvents.has(eventId)) {
+                    loggedEvents.add(eventId);
+                    console.log(`${timestamp}, hover, ${elementType}#${elementId}:${elementText}`);
+                    
+                    // Remove from set after 2 seconds to allow re-logging
+                    setTimeout(() => {
+                        loggedEvents.delete(eventId);
+                    }, 2000);
+                }
+            });
+        });
+    };
+    
+    // Track form interactions
+    const trackFormInteractions = function() {
+        const forms = document.querySelectorAll('form');
+        
+        forms.forEach(form => {
+            // Track form submissions
+            form.addEventListener('submit', function(e) {
+                const formId = this.id || 'unknown-form';
+                const timestamp = new Date().toISOString();
+                console.log(`${timestamp}, submit, form#${formId}`);
+            });
+            
+            // Track form field focus
+            const formFields = form.querySelectorAll('input, textarea, select');
+            formFields.forEach(field => {
+                field.addEventListener('focus', function() {
+                    const fieldId = this.id || 'unknown-field';
+                    const fieldType = this.type || 'text';
+                    const timestamp = new Date().toISOString();
+                    
+                    // Create unique event ID with a 5-second cooldown
+                    const eventId = `focus_${fieldId}_${fieldType}`;
+                    
+                    if (!loggedEvents.has(eventId)) {
+                        loggedEvents.add(eventId);
+                        console.log(`${timestamp}, focus, ${fieldType}#${fieldId}`);
+                        
+                        // Remove from set after 5 seconds
+                        setTimeout(() => {
+                            loggedEvents.delete(eventId);
+                        }, 5000);
+                    }
+                });
+            });
+        });
+    };
+    
+    // Initialize all tracking
+    document.addEventListener('DOMContentLoaded', function() {
+        observeElements();
+        trackHoverEvents();
+        trackFormInteractions();
+    });
+})();
