@@ -153,15 +153,14 @@ a:hover {
 .content-container {
   position: relative;
   z-index: 1;
-  min-height: calc(100vh - var(--navbar-height) - 254px); /* Footer height adjustment */
+  min-height: calc(100vh - var(--navbar-height));
   padding-bottom: 60px;
 }
 
 .section {
-    padding: 60px 0;
-    position: relative;
-    overflow: visible;
-  }
+  padding: 60px 0;
+  position: relative;
+}
 
 .row {
   display: flex;
@@ -448,15 +447,11 @@ a:hover {
 
 /* =========== Footer =========== */
 .footer {
-    position: relative;
-    z-index: 5;
-    margin-top: auto;
-    width: 100%;
-    background-color: var(--bg-primary);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-top: 1px solid var(--border-light);
-  }
+  background-color: var(--bg-primary);
+  padding: 40px 0 20px;
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
 
 .footer-content {
   display: flex;
@@ -646,13 +641,3 @@ a:hover {
     padding: 20px;
   }
 }
-
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  body {
-    min-height: 100vh;
-  }
