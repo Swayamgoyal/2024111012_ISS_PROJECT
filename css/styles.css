@@ -456,7 +456,7 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0px;
+  gap: 30px;
   margin-bottom: 0px;
 }
 
