@@ -457,7 +457,7 @@ a:hover {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .footer-info {
